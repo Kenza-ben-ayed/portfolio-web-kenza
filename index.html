@@ -11,6 +11,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- animate -->
     <link rel="stylesheet" href="css/animate.min.css" />
@@ -32,11 +38,64 @@
   <body>
     <div id="fullpage">
       <!-- start home -->
+      <nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <!-- <div class="navbar-header page-scroll">
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1"
+            >
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top"
+              >Celine Is Awesome</a
+            >
+          </div> -->
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div
+            class="collapse navbar-collapse"
+            id="bs-example-navbar-collapse-1"
+          >
+            <ul class="nav navbar-nav navbar-left">
+              <li class="hidden active">
+                <a href="#page-top"></a>
+              </li>
+              <li class="">
+                <a class="page-scroll" href="#about">About</a>
+              </li>
+              <li class="">
+                <a class="page-scroll" href="#work">Services</a>
+              </li>
+              <li class="">
+                <a class="page-scroll" href="#portfolio">Portfolio</a>
+              </li>
+
+              <!-- <li class="">
+                <a class="page-scroll" href="#team">Team</a>
+              </li> -->
+              <li class="">
+                <a class="page-scroll" href="#contact">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+      </nav>
       <div id="home" class="section">
+        <!-- Navigation -->
+
         <div class="container">
           <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-8 wow fadeIn" data-wow-delay="0.9s">
+            <div class="col-md-8 wow fadeIn div-left" data-wow-delay="0.3s">
               <!-- <h3>Simple and Elegant</h3> -->
               <h1>Kenza BEN AYED</h1>
               <h2 class="rotate">
@@ -109,7 +168,7 @@
             <div class="col-md-4 col-xs-11 wow fadeInUp" data-wow-delay="0.6s">
               <div class="media">
                 <div class="media-object media-left">
-                  <i class="fa fa-paper-plane"></i>
+                  <i class="fa fa-link"></i>
                 </div>
                 <div class="media-body">
                   <h3 class="media-heading">Back-End Development</h3>
@@ -132,26 +191,27 @@
           <div class="row">
             <div
               class="col-md-6 col-xs-11 wow fadeInLeft"
-              data-wow-delay="0.9s"
+              data-wow-delay="0.3s"
             >
               <h2>ABOUT Kenza</h2>
               <h4>Web &AMP; Mobile DEVELOPER</h4>
               <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna
-                aliquam erat volutpat.
+                I am a passionate developer specializing in building responsive
+                and modern web and mobile applications. With expertise in
+                front-end and back-end technologies, I strive to deliver
+                scalable and efficient solutions.
               </p>
               <p>
-                Dolore magna aliquam erat volutpat. Lorem ipsum dolor sit amet,
-                consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                tincidunt ut laoreet.
+                My work involves crafting seamless user experiences using
+                technologies like React.js, Next.js, and React Native, while
+                building robust back-end systems with Spring Boot and Node.js.
               </p>
             </div>
             <div
               class="col-md-6 col-xs-11 wow fadeInRight"
-              data-wow-delay="0.9s"
+              data-wow-delay="0.3s"
             >
-              <span class="text-top">front Web<small>90%</small></span>
+              <span class="text-top">Front Web<small>90%</small></span>
               <div class="progress">
                 <div
                   class="progress-bar progress-bar-danger"
@@ -159,7 +219,7 @@
                   aria-valuenow="60"
                   aria-valuemin="0"
                   aria-valuemax="100"
-                  style="width: 95%"
+                  style="width: 90%"
                 ></div>
               </div>
               <span>Mobile Apps <small>95%</small></span>
@@ -173,7 +233,7 @@
                   style="width: 95%"
                 ></div>
               </div>
-              <span>SEO Stuffs <small>70%</small></span>
+              <span>Back-End Development <small>75%</small></span>
               <div class="progress">
                 <div
                   class="progress-bar progress-bar-danger"
@@ -181,10 +241,10 @@
                   aria-valuenow="60"
                   aria-valuemin="0"
                   aria-valuemax="100"
-                  style="width: 70%"
+                  style="width: 75%"
                 ></div>
               </div>
-              <span>HTLM5 &AMP; CSS3 <small>90%</small></span>
+              <span>React Native &AMP; Expo<small>90%</small></span>
               <div class="progress">
                 <div
                   class="progress-bar progress-bar-danger"
@@ -216,51 +276,132 @@
                   alt="portfolio img"
                 />
                 <div class="portfolio-overlay">
-                  <h4>Web Design</h4>
-                  <h5>Author: Cindy</h5>
+                  <h3>Beedumy Front Mobile</h3>
+                  <h5>
+                    Company:<a
+                      href="https://www.facebook.com/institutpoincare1"
+                      target="_blank"
+                    >
+                      Institut Poincare</a
+                    >
+                  </h5>
+                  <h4>
+                    <strong>Link:</strong>
+                    <a href="https://www.beedumy.com/acceuil" target="_blank"
+                      >Beedumy</a
+                    >
+                  </h4>
+                  <h5 class="technologies">
+                    <strong>Technologies:</strong> Expo, React Native
+                  </h5>
+
+                  <h5 class="date">
+                    <strong>Start Date:</strong> August 2024<br />
+                    <strong>End Date:</strong> October 2024
+                  </h5>
                 </div>
               </div>
             </div>
             <div class="col-md-4 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
               <div class="portfolio-thumb">
                 <img
-                  src="images/portfolio-img2.jpg"
+                  src="images/portfolio-img2.png"
                   class="img-responsive"
                   alt="portfolio img"
+                  style="
+                    background-color: rgb(255, 255, 255);
+                    padding: 20px;
+                    min-height: 300px;
+                  "
                 />
                 <div class="portfolio-overlay">
-                  <h4>Web App</h4>
-                  <h5>Author: Linda</h5>
+                  <h3>Leo-In</h3>
+                  <h5>
+                    Company:<a href="https://www.leoni.com" target="_blank">
+                      LEONI Tunisia</a
+                    >
+                  </h5>
+                  <p>
+                    During my internship, I designed and developed a web
+                    (Dashboard) and mobile application to digitize Leoni's
+                    services.
+                  </p>
+                  <h5 class="technologies">
+                    <strong>Technologies:</strong> Expo, React Native,
+                    SpringBoot, NextJs
+                  </h5>
+
+                  <h5 class="date">
+                    <strong>Start Date:</strong> September 2024<br />
+                    <strong>End Date:</strong> October 2024
+                  </h5>
                 </div>
               </div>
             </div>
             <div class="col-md-4 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
               <div class="portfolio-thumb">
                 <img
-                  src="images/portfolio-img3.jpg"
+                  src="images/portfolio-img1.jpg"
                   class="img-responsive"
                   alt="portfolio img"
                 />
                 <div class="portfolio-overlay">
-                  <h4>Mobile App</h4>
-                  <h5>Author: Kate</h5>
+                  <h3>Beedumy Front Web</h3>
+                  <h5>
+                    Company:<a
+                      href="https://www.facebook.com/institutpoincare1"
+                      target="_blank"
+                    >
+                      Institut Poincare</a
+                    >
+                  </h5>
+                  <h4>
+                    <strong>Link:</strong>
+                    <a href="https://www.beedumy.com" target="_blank"
+                      >Beedumy</a
+                    >
+                  </h4>
+                  <h5 class="technologies">
+                    <strong>Technologies:</strong> Expo
+                  </h5>
+                  <br />
+                  <h5 class="date">
+                    <strong>Start Date:</strong> September 2024<br />
+                    <strong>End Date:</strong> October 2024
+                  </h5>
                 </div>
               </div>
             </div>
             <div class="col-md-6 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
               <div class="portfolio-thumb">
                 <img
-                  src="images/portfolio-img4.jpg"
+                  src="images/portfolio-img3.png"
                   class="img-responsive"
                   alt="portfolio img"
                 />
                 <div class="portfolio-overlay">
-                  <h4>Old Artwork</h4>
-                  <h5>Author: Catherine</h5>
+                  <h3>Communication Front Web</h3>
+                  <h5>
+                    Company:<a
+                      href="https://www.facebook.com/institutpoincare1"
+                      target="_blank"
+                    >
+                      Institut Poincare</a
+                    >
+                  </h5>
+
+                  <h5 class="technologies">
+                    <strong>Technologies:</strong> HTML,CSS,JavaScript
+                  </h5>
+                  <br />
+                  <h5 class="date">
+                    <strong>Start Date:</strong> October 2024<br />
+                    <strong>End Date:</strong> October 2024
+                  </h5>
                 </div>
               </div>
             </div>
-            <div class="col-md-6 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
+            <!-- <div class="col-md-6 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
               <div class="portfolio-thumb">
                 <img
                   src="images/portfolio-img5.jpg"
@@ -272,7 +413,7 @@
                   <h5>Author: Kathy</h5>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -345,9 +486,27 @@
               <p></p>
               <hr />
               <ul class="social-icon">
-                <li><a href="#" class="fa fa-facebook"></a></li>
-                <li><a href="#" class="fa fa-twitter"></a></li>
-                <li><a href="#" class="fa fa-instagram"></a></li>
+                <li>
+                  <a
+                    href="https://www.facebook.com/kenza.benayed.3323/"
+                    class="fa fa-facebook"
+                    target="_blank"
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/kenza-ben-ayed-92592a257/"
+                    class="fa fa-linkedin"
+                    target="_blank"
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.instagram.com/kanzouza__/"
+                    class="fa fa-instagram"
+                    target="_blank"
+                  ></a>
+                </li>
               </ul>
             </div>
           </div>
