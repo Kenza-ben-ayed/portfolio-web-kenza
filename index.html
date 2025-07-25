@@ -80,6 +80,7 @@
         display: flex;
         list-style: none;
         gap: 2rem;
+        align-items: center;
       }
 
       .nav-links a {
@@ -107,6 +108,34 @@
 
       .nav-links a:hover::after {
         width: 100%;
+      }
+
+      .language-switch {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 25px;
+        padding: 0.5rem 1rem;
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .language-switch:hover {
+        background: rgba(255, 255, 255, 0.2);
+        color: var(--text-primary);
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        font-size: 1.5rem;
+        cursor: pointer;
       }
 
       /* Hero Section */
@@ -390,6 +419,185 @@
         transition: width 1s ease;
       }
 
+      /* Education Section */
+      .education {
+        padding: 6rem 0;
+      }
+
+      .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .timeline::after {
+        content: "";
+        position: absolute;
+        width: 2px;
+        background: var(--gradient-1);
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -1px;
+      }
+
+      .timeline-item {
+        padding: 10px 40px;
+        position: relative;
+        background-color: inherit;
+        width: 50%;
+      }
+
+      .timeline-item::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: -10px;
+        background: var(--gradient-1);
+        border-radius: 50%;
+        top: 15px;
+      }
+
+      .timeline-item:nth-child(even) {
+        left: 50%;
+      }
+
+      .timeline-item:nth-child(even)::after {
+        left: -10px;
+      }
+
+      .timeline-content {
+        background: rgba(51, 65, 85, 0.4);
+        backdrop-filter: blur(20px);
+        padding: 2rem;
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+      }
+
+      .timeline-date {
+        color: var(--primary-color);
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-subtitle {
+        color: var(--text-secondary);
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .timeline-description {
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      /* Experience Section */
+      .experience {
+        padding: 6rem 0;
+        background: var(--bg-secondary);
+      }
+
+      .experience-grid {
+        display: grid;
+        gap: 2rem;
+      }
+
+      .experience-item {
+        background: rgba(51, 65, 85, 0.4);
+        backdrop-filter: blur(20px);
+        padding: 2.5rem;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .experience-item:hover {
+        transform: translateY(-5px);
+        background: rgba(51, 65, 85, 0.6);
+      }
+
+      .experience-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .experience-info h3 {
+        font-size: 1.4rem;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .experience-company {
+        color: var(--primary-color);
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      .experience-date {
+        color: var(--text-secondary);
+        font-weight: 500;
+        background: rgba(99, 102, 241, 0.2);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+      }
+
+      .experience-description {
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .achievements-list {
+        list-style: none;
+        margin-bottom: 1.5rem;
+      }
+
+      .achievements-list li {
+        color: var(--text-secondary);
+        margin-bottom: 0.8rem;
+        padding-left: 1.5rem;
+        position: relative;
+        line-height: 1.5;
+      }
+
+      .achievements-list li::before {
+        content: "✦";
+        color: var(--primary-color);
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .tech-tag {
+        background: rgba(99, 102, 241, 0.2);
+        color: var(--primary-color);
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
       /* Services Section */
       .services {
         padding: 6rem 0;
@@ -479,7 +687,6 @@
         transition: all 0.3s ease;
         border: 1px solid rgba(255, 255, 255, 0.1);
         position: relative;
-        group: hover;
       }
 
       .portfolio-item:hover {
@@ -531,15 +738,6 @@
         flex-wrap: wrap;
         gap: 0.5rem;
         margin-bottom: 1.5rem;
-      }
-
-      .tech-tag {
-        background: rgba(99, 102, 241, 0.2);
-        color: var(--primary-color);
-        padding: 0.3rem 0.8rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 500;
       }
 
       .portfolio-links {
@@ -604,6 +802,11 @@
         margin-bottom: 0.5rem;
       }
 
+      .contact-details {
+        text-decoration: none;
+        text-transform: none;
+      }
+
       .contact-details p {
         color: var(--text-secondary);
       }
@@ -637,6 +840,11 @@
         color: var(--text-primary);
         font-family: inherit;
         transition: all 0.3s ease;
+      }
+
+      .form-group input::placeholder,
+      .form-group textarea::placeholder {
+        color: var(--text-muted);
       }
 
       .form-group input:focus,
@@ -698,9 +906,46 @@
       }
 
       /* Responsive */
+      @media (max-width: 1024px) {
+        .timeline::after {
+          left: 31px;
+        }
+
+        .timeline-item {
+          width: 100%;
+          padding-left: 70px;
+          padding-right: 25px;
+        }
+
+        .timeline-item::after {
+          left: 21px;
+        }
+
+        .timeline-item:nth-child(even) {
+          left: 0%;
+        }
+      }
+
       @media (max-width: 768px) {
+        .mobile-menu-btn {
+          display: block;
+        }
+
         .nav-links {
           display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: var(--bg-secondary);
+          flex-direction: column;
+          padding: 2rem;
+          gap: 1rem;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-links.active {
+          display: flex;
         }
 
         .hero-container {
@@ -725,6 +970,49 @@
           flex-direction: column;
           align-items: center;
         }
+
+        .experience-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .tech-stack {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 1rem;
+        }
+
+        .nav-container {
+          padding: 0 1rem;
+        }
+
+        .hero-container {
+          padding: 0 1rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .hero-content h1 {
+          font-size: 2rem;
+        }
+
+        .timeline-item {
+          padding-left: 60px;
+        }
       }
     </style>
   </head>
@@ -733,13 +1021,40 @@
     <nav class="navbar" id="navbar">
       <div class="nav-container">
         <div class="logo">KB</div>
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#contact">Contact</a></li>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" data-en="Home" data-fr="Accueil">Home</a></li>
+          <li><a href="#about" data-en="About" data-fr="À propos">About</a></li>
+          <li>
+            <a href="#education" data-en="Education" data-fr="Formation"
+              >Education</a
+            >
+          </li>
+          <li>
+            <a href="#experience" data-en="Experience" data-fr="Expérience"
+              >Experience</a
+            >
+          </li>
+          <li>
+            <a href="#services" data-en="Services" data-fr="Services"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a href="#portfolio" data-en="Portfolio" data-fr="Portfolio"
+              >Portfolio</a
+            >
+          </li>
+          <li>
+            <a href="#contact" data-en="Contact" data-fr="Contact">Contact</a>
+          </li>
         </ul>
+        <div class="language-switch" onclick="toggleLanguage()">
+          <i class="fas fa-globe"></i>
+          <span id="langText">FR</span>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
     </nav>
 
@@ -747,11 +1062,22 @@
     <section class="hero" id="home">
       <div class="hero-container">
         <div class="hero-content">
-          <h1>Hi, I'm <span class="name-highlight">Kenza Ben Ayed</span></h1>
-          <p class="role">
+          <h1>
+            <span data-en="Hi, I'm " data-fr="Salut, je suis ">Hi, I'm </span
+            ><span class="name-highlight">Kenza Ben Ayed</span>
+          </h1>
+          <p
+            class="role"
+            data-en="Full Stack Developer | Mobile App Developer | Senior IT Technician"
+            data-fr="Développeuse Full Stack | Développeuse d'Applications Mobiles | Technicienne IT Senior"
+          >
             Full Stack Developer | Mobile App Developer | Senior IT Technician
           </p>
-          <p class="description">
+          <p
+            class="description"
+            data-en="I create exceptional digital experiences through innovative web and mobile applications. With expertise in modern technologies like React Native, Next.js, and Spring Boot, I bring ideas to life with clean code and stunning design."
+            data-fr="Je crée des expériences numériques exceptionnelles grâce à des applications web et mobiles innovantes. Avec une expertise en technologies modernes comme React Native, Next.js et Spring Boot, je donne vie aux idées avec du code propre et un design époustouflant."
+          >
             I create exceptional digital experiences through innovative web and
             mobile applications. With expertise in modern technologies like
             React Native, Next.js, and Spring Boot, I bring ideas to life with
@@ -760,17 +1086,21 @@
           <div class="cta-buttons">
             <a href="#portfolio" class="btn-primary">
               <i class="fas fa-eye"></i>
-              View My Work
+              <span data-en="View My Work" data-fr="Voir Mon Travail"
+                >View My Work</span
+              >
             </a>
             <a href="#contact" class="btn-secondary">
               <i class="fas fa-message"></i>
-              Let's Talk
+              <span data-en="Let's Talk" data-fr="Parlons">Let's Talk</span>
             </a>
           </div>
         </div>
         <div class="hero-visual">
           <div class="floating-card">
-            <h3>Frontend Excellence</h3>
+            <h3 data-en="Frontend Excellence" data-fr="Excellence Frontend">
+              Frontend Excellence
+            </h3>
             <div class="tech-stack">
               <div class="tech-item">
                 <i class="fab fa-react"></i>
@@ -793,17 +1123,30 @@
     <!-- About Section -->
     <section class="about" id="about">
       <div class="container">
-        <h2 class="section-title">About Me</h2>
+        <h2 class="section-title" data-en="About Me" data-fr="À Propos de Moi">
+          About Me
+        </h2>
         <div class="about-grid">
           <div class="about-text">
-            <h3>Passionate Developer & Problem Solver</h3>
-            <p>
+            <h3
+              data-en="Passionate Developer & Problem Solver"
+              data-fr="Développeuse Passionnée & Résolutrice de Problèmes"
+            >
+              Passionate Developer & Problem Solver
+            </h3>
+            <p
+              data-en="I'm a Senior Software Engineering Technician with extensive experience in developing cutting-edge web and mobile applications. My passion lies in creating scalable, efficient solutions that make a real impact."
+              data-fr="Je suis une Technicienne Senior en Ingénierie Logicielle avec une vaste expérience dans le développement d'applications web et mobiles de pointe. Ma passion réside dans la création de solutions évolutives et efficaces qui ont un impact réel."
+            >
               I'm a Senior Software Engineering Technician with extensive
               experience in developing cutting-edge web and mobile applications.
               My passion lies in creating scalable, efficient solutions that
               make a real impact.
             </p>
-            <p>
+            <p
+              data-en="With a strong foundation in both frontend and backend technologies, I excel at building complete digital ecosystems that deliver exceptional user experiences while maintaining robust performance and security."
+              data-fr="Avec une solide base en technologies frontend et backend, j'excelle dans la construction d'écosystèmes numériques complets qui offrent des expériences utilisateur exceptionnelles tout en maintenant des performances robustes et la sécurité."
+            >
               With a strong foundation in both frontend and backend
               technologies, I excel at building complete digital ecosystems that
               deliver exceptional user experiences while maintaining robust
@@ -817,18 +1160,27 @@
                 style="margin-right: 1rem"
               >
                 <i class="fas fa-download"></i>
-                Download CV (EN)
+                <span data-en="Download CV (EN)" data-fr="Télécharger CV (EN)"
+                  >Download CV (EN)</span
+                >
               </a>
               <a href="documents/new cv.pdf" download class="btn-secondary">
                 <i class="fas fa-download"></i>
-                Download CV (FR)
+                <span data-en="Download CV (FR)" data-fr="Télécharger CV (FR)"
+                  >Download CV (FR)</span
+                >
               </a>
             </div>
           </div>
           <div class="skills-grid">
             <div class="skill-item">
               <div class="skill-header">
-                <span class="skill-name">Frontend Development</span>
+                <span
+                  class="skill-name"
+                  data-en="Frontend Development"
+                  data-fr="Développement Frontend"
+                  >Frontend Development</span
+                >
                 <span class="skill-percent">90%</span>
               </div>
               <div class="skill-bar">
@@ -837,7 +1189,12 @@
             </div>
             <div class="skill-item">
               <div class="skill-header">
-                <span class="skill-name">Mobile Development</span>
+                <span
+                  class="skill-name"
+                  data-en="Mobile Development"
+                  data-fr="Développement Mobile"
+                  >Mobile Development</span
+                >
                 <span class="skill-percent">95%</span>
               </div>
               <div class="skill-bar">
@@ -846,7 +1203,12 @@
             </div>
             <div class="skill-item">
               <div class="skill-header">
-                <span class="skill-name">Backend Development</span>
+                <span
+                  class="skill-name"
+                  data-en="Backend Development"
+                  data-fr="Développement Backend"
+                  >Backend Development</span
+                >
                 <span class="skill-percent">75%</span>
               </div>
               <div class="skill-bar">
@@ -867,17 +1229,299 @@
       </div>
     </section>
 
+    <!-- Education Section -->
+    <section class="education" id="education">
+      <div class="container">
+        <h2 class="section-title" data-en="Education" data-fr="Formation">
+          Education
+        </h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2021 - 2024</div>
+              <h3
+                class="timeline-title"
+                data-en="Bachelor's Degree in Computer Science"
+                data-fr="Licence en Informatique"
+              >
+                Bachelor's Degree in Computer Science
+              </h3>
+              <p
+                class="timeline-subtitle"
+                data-en="Software Engineering Specialty"
+                data-fr="Spécialité Génie Logiciel"
+              >
+                Software Engineering Specialty
+              </p>
+              <p class="timeline-subtitle">
+                École Supérieure des Sciences et de la Technologie de Hammam
+                Sousse
+              </p>
+              <p
+                class="timeline-description"
+                data-en="Specialized in software engineering with focus on modern development frameworks and methodologies. Gained extensive knowledge in full-stack development, mobile applications, and software architecture."
+                data-fr="Spécialisée en génie logiciel avec un focus sur les frameworks de développement modernes et les méthodologies. Acquisition de connaissances étendues en développement full-stack, applications mobiles et architecture logicielle."
+              >
+                Specialized in software engineering with focus on modern
+                development frameworks and methodologies. Gained extensive
+                knowledge in full-stack development, mobile applications, and
+                software architecture.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2016 - 2021</div>
+              <h3
+                class="timeline-title"
+                data-en="Baccalaureate in Experimental Sciences"
+                data-fr="Baccalauréat Sciences Expérimentales"
+              >
+                Baccalaureate in Experimental Sciences
+              </h3>
+              <p class="timeline-subtitle">
+                Carthage Hannibal High School, Tunisia
+              </p>
+              <p
+                class="timeline-description"
+                data-en="Completed secondary education with focus on experimental sciences, building strong analytical and problem-solving foundations that later supported my transition into computer science and software engineering."
+                data-fr="Achèvement de l'enseignement secondaire avec un focus sur les sciences expérimentales, construisant de solides fondations analytiques et de résolution de problèmes qui ont ensuite soutenu ma transition vers l'informatique et le génie logiciel."
+              >
+                Completed secondary education with focus on experimental
+                sciences, building strong analytical and problem-solving
+                foundations that later supported my transition into computer
+                science and software engineering.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+      <div class="container">
+        <h2
+          class="section-title"
+          data-en="Professional Experience"
+          data-fr="Expérience Professionnelle"
+        >
+          Professional Experience
+        </h2>
+        <div class="experience-grid">
+          <!-- Institut Poincaré Experience -->
+          <div class="experience-item">
+            <div class="experience-header">
+              <div class="experience-info">
+                <h3
+                  data-en="Full Stack Developer"
+                  data-fr="Développeuse Full Stack"
+                >
+                  Full Stack Developer
+                </h3>
+                <p class="experience-company">Institut Poincaré</p>
+              </div>
+              <div
+                class="experience-date"
+                data-en="August 2024 - Present"
+                data-fr="Août 2024 - Présent"
+              >
+                August 2024 - Present
+              </div>
+            </div>
+            <p
+              class="experience-description"
+              data-en="Leading comprehensive digital transformation initiatives and developing innovative educational platforms."
+              data-fr="Direction d'initiatives complètes de transformation numérique et développement de plateformes éducatives innovantes."
+            >
+              Leading comprehensive digital transformation initiatives and
+              developing innovative educational platforms.
+            </p>
+
+            <ul class="achievements-list">
+              <li
+                data-en="Developed Beedumy mobile and web application for educational services with seamless learning resource access"
+                data-fr="Développement de l'application mobile et web Beedumy pour les services éducatifs avec un accès fluide aux ressources d'apprentissage"
+              >
+                Developed Beedumy mobile and web application for educational
+                services with seamless learning resource access
+              </li>
+
+              <li
+                data-en="Complete redesign and development of Poincaré website from scratch with modern design and optimization"
+                data-fr="Refonte complète et développement du site web Poincaré depuis zéro avec design moderne et optimisation"
+              >
+                Complete redesign and development of Poincaré website from
+                scratch with modern design and optimization
+              </li>
+
+              <li
+                data-en="Transformed Poincaré Web platform into native Android application"
+                data-fr="Transformation de la plateforme Poincaré Web en application Android native"
+              >
+                Transformed Poincaré Web platform into native Android
+                application
+              </li>
+
+              <li
+                data-en="Built Hafadhny mobile app for kids' educational services and poem memorization"
+                data-fr="Construction de l'application mobile Hafadhny pour les services éducatifs des enfants et la mémorisation de poèmes"
+              >
+                Built Hafadhny mobile app for kids' educational services and
+                poem memorization
+              </li>
+
+              <li
+                data-en="Designed and implemented interactive schedule management system with intuitive interface"
+                data-fr="Conception et implémentation d'un système de gestion de planning interactif avec interface intuitive"
+              >
+                Designed and implemented interactive schedule management system
+                with intuitive interface
+              </li>
+
+              <li
+                data-en="Created communication interface for online courses and redesigned digital whiteboard for teacher note-taking"
+                data-fr="Création d'interface de communication pour cours en ligne et refonte du tableau blanc numérique pour la prise de notes des enseignants"
+              >
+                Created communication interface for online courses and
+                redesigned digital whiteboard for teacher note-taking
+              </li>
+
+              <li
+                data-en="Deployed and configured Odoo container locally and automated VPS deployment via GitHub"
+                data-fr="Déploiement et configuration du conteneur Odoo en local et automatisation du déploiement VPS via GitHub"
+              >
+                Deployed and configured Odoo container locally and automated VPS
+                deployment via GitHub
+              </li>
+
+              <li
+                data-en="Led IT department management for one week and supervised intern development projects"
+                data-fr="Direction de la gestion du département IT pendant une semaine et supervision de projets de développement de stagiaires"
+              >
+                Led IT department management for one week and supervised intern
+                development projects
+              </li>
+
+              <li
+                data-en="Spearheaded AutoStudy project including web interface development and educational content integration"
+                data-fr="Direction du projet AutoStudy incluant le développement d'interface web et l'intégration de contenu éducatif"
+              >
+                Spearheaded AutoStudy project including web interface
+                development and educational content integration
+              </li>
+            </ul>
+
+            <div class="tech-tags">
+              <span class="tech-tag">React Native</span>
+              <span class="tech-tag">Expo</span>
+              <span class="tech-tag">Next.js</span>
+              <span class="tech-tag">React.js</span>
+              <span class="tech-tag">Android</span>
+              <span class="tech-tag">Odoo</span>
+              <span class="tech-tag">GitHub</span>
+              <span class="tech-tag">VPS</span>
+            </div>
+          </div>
+
+          <!-- LEONI Experience -->
+          <div class="experience-item">
+            <div class="experience-header">
+              <div class="experience-info">
+                <h3
+                  data-en="Software Engineering Intern"
+                  data-fr="Stagiaire Ingénierie Logicielle"
+                >
+                  Software Engineering Intern
+                </h3>
+                <p class="experience-company">LEONI Wiring Systems Tunisia</p>
+              </div>
+              <div
+                class="experience-date"
+                data-en="January 2024 - June 2024"
+                data-fr="Janvier 2024 - Juin 2024"
+              >
+                January 2024 - June 2024
+              </div>
+            </div>
+            <p
+              class="experience-description"
+              data-en="Completed final project internship focusing on digitizing industrial services and developing comprehensive platform solutions."
+              data-fr="Achèvement du stage de projet final axé sur la numérisation des services industriels et le développement de solutions de plateforme complètes."
+            >
+              Completed final project internship focusing on digitizing
+              industrial services and developing comprehensive platform
+              solutions.
+            </p>
+
+            <ul class="achievements-list">
+              <li
+                data-en="Designed and developed Leo-In platform with comprehensive web dashboard and mobile application"
+                data-fr="Conception et développement de la plateforme Leo-In avec tableau de bord web complet et application mobile"
+              >
+                Designed and developed Leo-In platform with comprehensive web
+                dashboard and mobile application
+              </li>
+
+              <li
+                data-en="Successfully digitized Leoni's industrial services and streamlined operational workflows"
+                data-fr="Numérisation réussie des services industriels de Leoni et rationalisation des flux de travail opérationnels"
+              >
+                Successfully digitized Leoni's industrial services and
+                streamlined operational workflows
+              </li>
+
+              <li
+                data-en="Implemented efficient data management systems and user-friendly interfaces for industrial processes"
+                data-fr="Implémentation de systèmes de gestion de données efficaces et d'interfaces conviviales pour les processus industriels"
+              >
+                Implemented efficient data management systems and user-friendly
+                interfaces for industrial processes
+              </li>
+
+              <li
+                data-en="Collaborated with cross-functional teams to understand business requirements and deliver tailored solutions"
+                data-fr="Collaboration avec des équipes transversales pour comprendre les exigences métier et livrer des solutions sur mesure"
+              >
+                Collaborated with cross-functional teams to understand business
+                requirements and deliver tailored solutions
+              </li>
+            </ul>
+
+            <div class="tech-tags">
+              <span class="tech-tag">React Native</span>
+              <span class="tech-tag">Spring Boot</span>
+              <span class="tech-tag">Next.js</span>
+              <span class="tech-tag">Dashboard</span>
+              <span class="tech-tag">Mobile Development</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Services Section -->
     <section class="services" id="services">
       <div class="container">
-        <h2 class="section-title">What I Do</h2>
+        <h2 class="section-title" data-en="What I Do" data-fr="Ce Que Je Fais">
+          What I Do
+        </h2>
         <div class="services-grid">
           <div class="service-card">
             <div class="service-icon">
               <i class="fas fa-laptop-code"></i>
             </div>
-            <h3>Frontend Web Development</h3>
-            <p>
+            <h3
+              data-en="Frontend Web Development"
+              data-fr="Développement Web Frontend"
+            >
+              Frontend Web Development
+            </h3>
+            <p
+              data-en="I create responsive and modern websites using cutting-edge technologies like React.js, Next.js, and modern CSS frameworks. My focus is on delivering seamless user experiences with pixel-perfect designs."
+              data-fr="Je crée des sites web responsifs et modernes en utilisant des technologies de pointe comme React.js, Next.js et des frameworks CSS modernes. Mon focus est de livrer des expériences utilisateur fluides avec des designs pixel-perfect."
+            >
               I create responsive and modern websites using cutting-edge
               technologies like React.js, Next.js, and modern CSS frameworks. My
               focus is on delivering seamless user experiences with
@@ -888,8 +1532,16 @@
             <div class="service-icon">
               <i class="fas fa-mobile-alt"></i>
             </div>
-            <h3>Mobile App Development</h3>
-            <p>
+            <h3
+              data-en="Mobile App Development"
+              data-fr="Développement d'Applications Mobiles"
+            >
+              Mobile App Development
+            </h3>
+            <p
+              data-en="I build high-performance, cross-platform mobile applications using React Native and Expo. From concept to deployment, I ensure optimal performance and user-friendly interfaces."
+              data-fr="Je construis des applications mobiles haute performance et cross-platform en utilisant React Native et Expo. Du concept au déploiement, j'assure des performances optimales et des interfaces conviviales."
+            >
               I build high-performance, cross-platform mobile applications using
               React Native and Expo. From concept to deployment, I ensure
               optimal performance and user-friendly interfaces.
@@ -899,8 +1551,13 @@
             <div class="service-icon">
               <i class="fas fa-server"></i>
             </div>
-            <h3>Backend Development</h3>
-            <p>
+            <h3 data-en="Backend Development" data-fr="Développement Backend">
+              Backend Development
+            </h3>
+            <p
+              data-en="I develop scalable backend systems using Spring Boot and Node.js, focusing on robust APIs, efficient data management, and secure authentication systems that power your applications."
+              data-fr="Je développe des systèmes backend évolutifs en utilisant Spring Boot et Node.js, me concentrant sur des APIs robustes, une gestion efficace des données et des systèmes d'authentification sécurisés qui alimentent vos applications."
+            >
               I develop scalable backend systems using Spring Boot and Node.js,
               focusing on robust APIs, efficient data management, and secure
               authentication systems that power your applications.
@@ -913,7 +1570,13 @@
     <!-- Portfolio Section -->
     <section class="portfolio" id="portfolio">
       <div class="container">
-        <h2 class="section-title">Featured Projects</h2>
+        <h2
+          class="section-title"
+          data-en="Featured Projects"
+          data-fr="Projets Phares"
+        >
+          Featured Projects
+        </h2>
         <div class="portfolio-grid">
           <div class="portfolio-item">
             <div class="portfolio-image">
@@ -921,8 +1584,12 @@
             </div>
             <div class="portfolio-content">
               <h3 class="portfolio-title">Beedumy Mobile App</h3>
-              <p class="portfolio-company">Institut Poincare</p>
-              <p class="portfolio-description">
+              <p class="portfolio-company">Institut Poincaré</p>
+              <p
+                class="portfolio-description"
+                data-en="Developed a comprehensive mobile application for educational services, providing students with seamless access to learning resources and course management."
+                data-fr="Développement d'une application mobile complète pour les services éducatifs, offrant aux étudiants un accès fluide aux ressources d'apprentissage et à la gestion des cours."
+              >
                 Developed a comprehensive mobile application for educational
                 services, providing students with seamless access to learning
                 resources and course management.
@@ -939,8 +1606,34 @@
                   class="portfolio-link"
                 >
                   <i class="fas fa-external-link-alt"></i>
-                  Live Demo
+                  <span data-en="Live Demo" data-fr="Démonstration"
+                    >Live Demo</span
+                  >
                 </a>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <div class="portfolio-image">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">Hafadhny Mobile App</h3>
+              <p class="portfolio-company">Institut Poincaré</p>
+              <p
+                class="portfolio-description"
+                data-en="Developed a comprehensive mobile application for educational services, providing kids with seamless access to learning resources and course management and help them memorize their poems and so more."
+                data-fr="Développement d'une application mobile complète pour les services éducatifs, offrant aux enfants un accès fluide aux ressources d'apprentissage et à la gestion des cours, les aidant à mémoriser leurs poèmes et bien plus."
+              >
+                Developed a comprehensive mobile application for educational
+                services, providing kids with seamless access to learning
+                resources and course management and help them memorize their
+                poems and so more.
+              </p>
+              <div class="portfolio-tech">
+                <span class="tech-tag">Expo</span>
+                <span class="tech-tag">React Native</span>
+                <span class="tech-tag">Mobile</span>
               </div>
             </div>
           </div>
@@ -952,7 +1645,11 @@
             <div class="portfolio-content">
               <h3 class="portfolio-title">Leo-In Platform</h3>
               <p class="portfolio-company">LEONI Tunisia</p>
-              <p class="portfolio-description">
+              <p
+                class="portfolio-description"
+                data-en="Designed and developed a comprehensive web dashboard and mobile application to digitize Leoni's industrial services and streamline operations."
+                data-fr="Conception et développement d'un tableau de bord web complet et d'une application mobile pour numériser les services industriels de Leoni et rationaliser les opérations."
+              >
                 Designed and developed a comprehensive web dashboard and mobile
                 application to digitize Leoni's industrial services and
                 streamline operations.
@@ -971,16 +1668,502 @@
               <i class="fas fa-calendar-alt"></i>
             </div>
             <div class="portfolio-content">
-              <h3 class="portfolio-title">Interactive Schedule Manager</h3>
-              <p class="portfolio-company">Institut Poincare</p>
-              <p class="portfolio-description">
+              <h3
+                class="portfolio-title"
+                data-en="Interactive Schedule Manager"
+                data-fr="Gestionnaire de Planning Interactif"
+              >
+                Interactive Schedule Manager
+              </h3>
+              <p class="portfolio-company">Institut Poincaré</p>
+              <p
+                class="portfolio-description"
+                data-en="Built a dynamic schedule management system with intuitive interface for managing academic timetables and resource allocation."
+                data-fr="Construction d'un système de gestion de planning dynamique avec une interface intuitive pour la gestion des emplois du temps académiques et l'allocation des ressources."
+              >
                 Built a dynamic schedule management system with intuitive
                 interface for managing academic timetables and resource
+                allocation.
               </p>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2
+          class="section-title"
+          data-en="Get In Touch"
+          data-fr="Contactez-Moi"
+        >
+          Get In Touch
+        </h2>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h4 data-en="Email" data-fr="Email">Email</h4>
+                <p>btazanka@gmail.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-details">
+                <h4 data-en="Phone" data-fr="Téléphone">Phone</h4>
+                <p>+216 22 459 159</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h4 data-en="Location" data-fr="Localisation">Location</h4>
+                <p data-en="Tunisia" data-fr="Tunisie">Tunisia</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fab fa-linkedin"></i>
+              </div>
+              <a
+                href="https://www.linkedin.com/in/kenza-ben-ayed-92592a257"
+                class="contact-details"
+                target="_blank"
+              >
+                <h4>LinkedIn</h4>
+                <p>linkedin.com/in/kenza-ben-ayed</p>
+              </a>
+            </div>
+          </div>
+
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label for="name" data-en="Full Name" data-fr="Nom Complet"
+                >Full Name</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                data-placeholder-en="Your full name"
+                data-placeholder-fr="Votre nom complet"
+                placeholder="Your full name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email" data-en="Email Address" data-fr="Adresse Email"
+                >Email Address</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                data-placeholder-en="your.email@example.com"
+                data-placeholder-fr="votre.email@exemple.com"
+                placeholder="your.email@example.com"
+              />
+            </div>
+            <div class="form-group">
+              <label for="subject" data-en="Subject" data-fr="Sujet"
+                >Subject</label
+              >
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                required
+                data-placeholder-en="Project inquiry, collaboration, etc."
+                data-placeholder-fr="Demande de projet, collaboration, etc."
+                placeholder="Project inquiry, collaboration, etc."
+              />
+            </div>
+            <div class="form-group">
+              <label for="message" data-en="Message" data-fr="Message"
+                >Message</label
+              >
+              <textarea
+                id="message"
+                name="message"
+                required
+                data-placeholder-en="Tell me about your project or how we can work together..."
+                data-placeholder-fr="Parlez-moi de votre projet ou comment nous pouvons travailler ensemble..."
+                placeholder="Tell me about your project or how we can work together..."
+              ></textarea>
+            </div>
+            <button type="submit" class="btn-primary">
+              <i class="fas fa-paper-plane"></i>
+              <span data-en="Send Message" data-fr="Envoyer le Message"
+                >Send Message</span
+              >
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="social-links">
+          <a
+            href="https://www.linkedin.com/in/kenza-ben-ayed-92592a257"
+            class="social-link"
+          >
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/Kenza-ben-ayed" class="social-link">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+        <p
+          data-en="© 2024 Kenza Ben Ayed. All rights reserved."
+          data-fr="© 2024 Kenza Ben Ayed. Tous droits réservés."
+        >
+          &copy; 2024 Kenza Ben Ayed. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Language toggle functionality
+      let currentLanguage = "en";
+
+      function toggleLanguage() {
+        currentLanguage = currentLanguage === "en" ? "fr" : "en";
+        updateLanguage();
+      }
+
+      function updateLanguage() {
+        const elements = document.querySelectorAll("[data-en][data-fr]");
+        const langText = document.getElementById("langText");
+
+        elements.forEach((element) => {
+          if (currentLanguage === "en") {
+            element.textContent = element.getAttribute("data-en");
+          } else {
+            element.textContent = element.getAttribute("data-fr");
+          }
+        });
+
+        // Update placeholders
+        const inputElements = document.querySelectorAll(
+          "input[data-placeholder-en], textarea[data-placeholder-en]"
+        );
+        inputElements.forEach((element) => {
+          if (currentLanguage === "en") {
+            element.placeholder = element.getAttribute("data-placeholder-en");
+          } else {
+            element.placeholder = element.getAttribute("data-placeholder-fr");
+          }
+        });
+
+        // Update language button text
+        langText.textContent = currentLanguage === "en" ? "FR" : "EN";
+      }
+
+      // Mobile menu toggle
+      function toggleMobileMenu() {
+        const navLinks = document.getElementById("navLinks");
+        navLinks.classList.toggle("active");
+      }
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          const targetSection = document.querySelector(targetId);
+
+          if (targetSection) {
+            targetSection.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+
+          // Close mobile menu if open
+          const navLinks = document.getElementById("navLinks");
+          navLinks.classList.remove("active");
+        });
+      });
+
+      // Contact form handling
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get form data
+          const formData = new FormData(this);
+          const name = formData.get("name");
+          const email = formData.get("email");
+          const subject = formData.get("subject");
+          const message = formData.get("message");
+
+          // Simple validation
+          if (!name || !email || !subject || !message) {
+            alert(
+              currentLanguage === "en"
+                ? "Please fill in all fields."
+                : "Veuillez remplir tous les champs."
+            );
+            return;
+          }
+
+          // Email validation
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            alert(
+              currentLanguage === "en"
+                ? "Please enter a valid email address."
+                : "Veuillez entrer une adresse email valide."
+            );
+            return;
+          }
+
+          // Show success message
+          alert(
+            currentLanguage === "en"
+              ? "Thank you for your message! I will get back to you soon."
+              : "Merci pour votre message ! Je vous répondrai bientôt."
+          );
+
+          // Reset form
+          this.reset();
+        });
+
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      // Observe elements for animation
+      document.addEventListener("DOMContentLoaded", () => {
+        const animatedElements = document.querySelectorAll(
+          ".timeline-item, .experience-item, .service-card, .portfolio-item"
+        );
+        animatedElements.forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(30px)";
+          el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+          observer.observe(el);
+        });
+      });
+
+      // Skill bars animation
+      function animateSkillBars() {
+        const skillBars = document.querySelectorAll(".skill-progress");
+        skillBars.forEach((bar) => {
+          const width = bar.style.width;
+          bar.style.width = "0%";
+          setTimeout(() => {
+            bar.style.width = width;
+          }, 500);
+        });
+      }
+
+      // Trigger skill bars animation when about section is visible
+      const aboutSection = document.querySelector(".about");
+      const aboutObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateSkillBars();
+              aboutObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      if (aboutSection) {
+        aboutObserver.observe(aboutSection);
+      }
+
+      // Initialize language on page load
+      document.addEventListener("DOMContentLoaded", () => {
+        updateLanguage();
+      });
+
+      // Add typing effect to hero text
+      function typeWriter(element, text, speed = 100) {
+        let i = 0;
+        element.innerHTML = "";
+
+        function type() {
+          if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+          }
+        }
+        type();
+      }
+
+      // Initialize typing effect after page load
+      window.addEventListener("load", () => {
+        const heroTitle = document.querySelector(".hero-content h1");
+        if (heroTitle) {
+          const originalText = heroTitle.textContent;
+          setTimeout(() => {
+            typeWriter(heroTitle, originalText, 50);
+          }, 1000);
+        }
+      });
+
+      // Add scroll-to-top functionality
+      function addScrollToTop() {
+        const scrollBtn = document.createElement("button");
+        scrollBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        scrollBtn.className = "scroll-to-top";
+        scrollBtn.style.cssText = `
+          position: fixed;
+          bottom: 2rem;
+          right: 2rem;
+          width: 50px;
+          height: 50px;
+          background: var(--gradient-1);
+          border: none;
+          border-radius: 50%;
+          color: white;
+          font-size: 1.2rem;
+          cursor: pointer;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease;
+          z-index: 1000;
+        `;
+
+        document.body.appendChild(scrollBtn);
+
+        // Show/hide scroll button
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 500) {
+            scrollBtn.style.opacity = "1";
+            scrollBtn.style.visibility = "visible";
+          } else {
+            scrollBtn.style.opacity = "0";
+            scrollBtn.style.visibility = "hidden";
+          }
+        });
+
+        // Scroll to top on click
+        scrollBtn.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+      }
+
+      // Initialize scroll-to-top button
+      document.addEventListener("DOMContentLoaded", addScrollToTop);
+
+      // Add hover effects to portfolio items
+      document.querySelectorAll(".portfolio-item").forEach((item) => {
+        item.addEventListener("mouseenter", function () {
+          this.style.transform = "translateY(-10px) scale(1.02)";
+        });
+
+        item.addEventListener("mouseleave", function () {
+          this.style.transform = "translateY(0) scale(1)";
+        });
+      });
+
+      // Add parallax effect to hero background
+      window.addEventListener("scroll", () => {
+        const scrolled = window.pageYOffset;
+        const parallax = document.querySelector(".hero::before");
+        if (parallax) {
+          const speed = scrolled * 0.5;
+          parallax.style.transform = `translateY(${speed}px)`;
+        }
+      });
+
+      // Add loading animation
+      window.addEventListener("load", () => {
+        document.body.classList.add("loaded");
+
+        // Add CSS for loading state
+        const style = document.createElement("style");
+        style.textContent = `
+          body:not(.loaded) {
+            overflow: hidden;
+          }
+          
+          body:not(.loaded)::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          
+          body:not(.loaded)::after {
+            content: '';
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--primary-color);
+            border-top: 3px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+          }
+          
+          @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+          }
+        `;
+        document.head.appendChild(style);
+      });
+    </script>
   </body>
 </html>
