@@ -202,14 +202,18 @@
         opacity: 0;
         animation: slideUp 1s ease 0.2s forwards;
       }
-
       .hero-content .name-highlight {
         background: var(--gradient-1);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-      }
 
+        /* 👇 Add these for stability */
+        will-change: transform;
+        display: inline-block;
+        backface-visibility: hidden;
+        transform: translateZ(0);
+      }
       .hero-content .role {
         font-size: 1.25rem;
         color: var(--text-secondary);
