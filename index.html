@@ -2,631 +2,985 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-
-    <title>kenza ben ayed</title>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <meta name="author" content="templatemo" />
-
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Kenza Ben Ayed | Full Stack Developer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    <!-- animate -->
-    <link rel="stylesheet" href="css/animate.min.css" />
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <!-- font-awesome -->
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <!-- google font -->
-    <link
-      href="http://fonts.googleapis.com/css?family=Raleway:400,300,700,800"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <!-- fullpage -->
-    <link rel="stylesheet" href="css/jquery.fullPage.css" />
-    <!-- custom -->
-    <link rel="stylesheet" href="css/templatemo-style.css" />
+      :root {
+        --primary-color: #6366f1;
+        --secondary-color: #f59e0b;
+        --accent-color: #10b981;
+        --text-primary: #ffffff;
+        --text-secondary: #e5e7eb;
+        --text-muted: #9ca3af;
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --bg-card: #334155;
+        --gradient-1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        --gradient-2: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+        --gradient-3: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        overflow-x: hidden;
+      }
+
+      /* Navigation */
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(20px);
+        z-index: 1000;
+        padding: 1rem 0;
+        transition: all 0.3s ease;
+      }
+
+      .navbar.scrolled {
+        background: rgba(15, 23, 42, 0.98);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--gradient-1);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 20% 50%,
+            rgba(99, 102, 241, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(245, 158, 11, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 40% 80%,
+            rgba(16, 185, 129, 0.1) 0%,
+            transparent 50%
+          );
+        animation: float 20s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(2deg);
+        }
+      }
+
+      .hero-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-content h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        opacity: 0;
+        animation: slideUp 1s ease 0.2s forwards;
+      }
+
+      .hero-content .name-highlight {
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-content .role {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+        opacity: 0;
+        animation: slideUp 1s ease 0.4s forwards;
+      }
+
+      .hero-content .description {
+        font-size: 1.1rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        opacity: 0;
+        animation: slideUp 1s ease 0.6s forwards;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        opacity: 0;
+        animation: slideUp 1s ease 0.8s forwards;
+      }
+
+      .btn-primary {
+        background: var(--gradient-1);
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--text-primary);
+        border: 2px solid var(--primary-color);
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        background: var(--primary-color);
+        transform: translateY(-2px);
+      }
+
+      .hero-visual {
+        position: relative;
+        opacity: 0;
+        animation: slideUp 1s ease 1s forwards;
+      }
+
+      .floating-card {
+        background: rgba(51, 65, 85, 0.6);
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        padding: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .floating-card:nth-child(2) {
+        animation-delay: -2s;
+      }
+
+      .floating-card:nth-child(3) {
+        animation-delay: -4s;
+      }
+
+      .tech-stack {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .tech-item {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 1rem;
+        border-radius: 10px;
+        text-align: center;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .tech-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-5px);
+      }
+
+      .tech-item i {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* About Section */
+      .about {
+        padding: 6rem 0;
+        background: var(--bg-secondary);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 3rem;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .about-text {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: var(--text-secondary);
+      }
+
+      .about-text h3 {
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .skill-item {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 1.5rem;
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .skill-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-5px);
+      }
+
+      .skill-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+      }
+
+      .skill-name {
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .skill-percent {
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+
+      .skill-bar {
+        height: 6px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+        overflow: hidden;
+      }
+
+      .skill-progress {
+        height: 100%;
+        background: var(--gradient-1);
+        border-radius: 3px;
+        transition: width 1s ease;
+      }
+
+      /* Services Section */
+      .services {
+        padding: 6rem 0;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+      }
+
+      .service-card {
+        background: rgba(51, 65, 85, 0.4);
+        backdrop-filter: blur(20px);
+        padding: 2.5rem;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .service-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-1);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .service-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        background: rgba(51, 65, 85, 0.6);
+      }
+
+      .service-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--gradient-1);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .service-icon i {
+        font-size: 1.5rem;
+        color: white;
+      }
+
+      .service-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+
+      .service-card p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      /* Portfolio Section */
+      .portfolio {
+        padding: 6rem 0;
+        background: var(--bg-secondary);
+      }
+
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 2rem;
+      }
+
+      .portfolio-item {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+        group: hover;
+      }
+
+      .portfolio-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .portfolio-image {
+        height: 250px;
+        background: var(--gradient-1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .portfolio-image i {
+        font-size: 3rem;
+        color: white;
+        opacity: 0.8;
+      }
+
+      .portfolio-content {
+        padding: 2rem;
+      }
+
+      .portfolio-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--text-primary);
+      }
+
+      .portfolio-company {
+        color: var(--primary-color);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+
+      .portfolio-description {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .portfolio-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .tech-tag {
+        background: rgba(99, 102, 241, 0.2);
+        color: var(--primary-color);
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .portfolio-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .portfolio-link {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .portfolio-link:hover {
+        color: var(--text-primary);
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 6rem 0;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+      }
+
+      .contact-info {
+        space-y: 2rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .contact-icon {
+        width: 50px;
+        height: 50px;
+        background: var(--gradient-1);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .contact-icon i {
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      .contact-details h4 {
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .contact-details p {
+        color: var(--text-secondary);
+      }
+
+      .contact-form {
+        background: rgba(51, 65, 85, 0.4);
+        backdrop-filter: blur(20px);
+        padding: 2.5rem;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--text-primary);
+        font-weight: 500;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        color: var(--text-primary);
+        font-family: inherit;
+        transition: all 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--bg-secondary);
+        padding: 3rem 0 2rem;
+        text-align: center;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .social-link {
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .social-link:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-5px);
+      }
+
+      /* Animations */
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero-container {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .about-grid,
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="fullpage">
-      <!-- start home -->
-      <nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
-        <div class="container">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <!-- <div class="navbar-header page-scroll">
-            <button
-              type="button"
-              class="navbar-toggle"
-              data-toggle="collapse"
-              data-target="#bs-example-navbar-collapse-1"
-            >
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand page-scroll" href="#page-top"
-              >Celine Is Awesome</a
-            >
-          </div> -->
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <div class="logo">KB</div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div
-            class="collapse navbar-collapse"
-            id="bs-example-navbar-collapse-1"
-          >
-            <ul class="nav navbar-nav navbar-left">
-              <li class="hidden active">
-                <a href="#page-top"></a>
-              </li>
-              <li class="">
-                <a class="page-scroll" href="#about">About</a>
-              </li>
-              <li class="">
-                <a class="page-scroll" href="#work">Services</a>
-              </li>
-              <li class="">
-                <a class="page-scroll" href="#portfolio">Portfolio</a>
-              </li>
-
-              <!-- <li class="">
-                <a class="page-scroll" href="#team">Team</a>
-              </li> -->
-              <li class="">
-                <a class="page-scroll" href="#contact">Contact</a>
-              </li>
-            </ul>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1>Hi, I'm <span class="name-highlight">Kenza Ben Ayed</span></h1>
+          <p class="role">
+            Full Stack Developer | Mobile App Developer | Senior IT Technician
+          </p>
+          <p class="description">
+            I create exceptional digital experiences through innovative web and
+            mobile applications. With expertise in modern technologies like
+            React Native, Next.js, and Spring Boot, I bring ideas to life with
+            clean code and stunning design.
+          </p>
+          <div class="cta-buttons">
+            <a href="#portfolio" class="btn-primary">
+              <i class="fas fa-eye"></i>
+              View My Work
+            </a>
+            <a href="#contact" class="btn-secondary">
+              <i class="fas fa-message"></i>
+              Let's Talk
+            </a>
           </div>
-          <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container-fluid -->
-      </nav>
-      <div id="home" class="section">
-        <!-- Navigation -->
+        <div class="hero-visual">
+          <div class="floating-card">
+            <h3>Frontend Excellence</h3>
+            <div class="tech-stack">
+              <div class="tech-item">
+                <i class="fab fa-react"></i>
+                <p>React</p>
+              </div>
+              <div class="tech-item">
+                <i class="fab fa-js"></i>
+                <p>Next.js</p>
+              </div>
+              <div class="tech-item">
+                <i class="fas fa-mobile-alt"></i>
+                <p>React Native</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="container">
-          <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8 wow fadeIn div-left" data-wow-delay="0.3s">
-              <!-- <h3>Simple and Elegant</h3> -->
-              <h1>Kenza BEN AYED</h1>
-              <h2 class="rotate">
-                DEVELOPER FULL STACK, WEB &AMP; MOBILE, SENIOR IT TECHNICIAN
-              </h2>
-              <p>
-                Senior Software Engineering Technician with extensive experience
-                in developing web and mobile applications. Demonstrated
-                expertise in utilizing modern technologies such as React Native,
-                Next.js, Spring Boot, and MySQL. Skilled in designing,
-                developing, and maintaining robust and scalable software
-                systems. Passionate about optimizing performance and creating
-                innovative solutions to meet client needs.
-              </p>
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <h3>Passionate Developer & Problem Solver</h3>
+            <p>
+              I'm a Senior Software Engineering Technician with extensive
+              experience in developing cutting-edge web and mobile applications.
+              My passion lies in creating scalable, efficient solutions that
+              make a real impact.
+            </p>
+            <p>
+              With a strong foundation in both frontend and backend
+              technologies, I excel at building complete digital ecosystems that
+              deliver exceptional user experiences while maintaining robust
+              performance and security.
+            </p>
+            <div style="margin-top: 2rem">
               <a
-                href="#work"
-                class="btn btn-default smoothScroll wow fadeInUp"
-                data-wow-delay="1s"
-                >Get started</a
+                href="documents/new cv EN.pdf"
+                download
+                class="btn-primary"
+                style="margin-right: 1rem"
               >
-            </div>
-            <div class="col-md-2"></div>
-          </div>
-        </div>
-      </div>
-      <!-- end home -->
-
-      <!-- start work -->
-      <div id="work" class="section">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12 wow bounce">
-              <h2>WHAT I DO</h2>
+                <i class="fas fa-download"></i>
+                Download CV (EN)
+              </a>
+              <a href="documents/new cv.pdf" download class="btn-secondary">
+                <i class="fas fa-download"></i>
+                Download CV (FR)
+              </a>
             </div>
           </div>
-
-          <div class="row">
-            <div class="col-md-4 col-xs-11 wow fadeInUp" data-wow-delay="0.6s">
-              <div class="media">
-                <div class="media-object media-left">
-                  <i class="fa fa-laptop"></i>
-                </div>
-                <div class="media-body">
-                  <h3 class="media-heading">Front-End Web Development</h3>
-                  <p>
-                    I create responsive and modern websites using HTML, CSS,
-                    JavaScript, React.js, Next.js, or Expo. My focus is on
-                    delivering seamless user experiences.
-                  </p>
-                </div>
+          <div class="skills-grid">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Frontend Development</span>
+                <span class="skill-percent">90%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%"></div>
               </div>
             </div>
-
-            <div class="col-md-4 col-xs-11 wow fadeInUp" data-wow-delay="0.6s">
-              <div class="media">
-                <div class="media-object media-left">
-                  <i class="fa fa-mobile"></i>
-                </div>
-                <div class="media-body">
-                  <h3 class="media-heading">Mobile App Development</h3>
-                  <p>
-                    I build responsive and user-friendly mobile applications
-                    using React Native and Expo, ensuring optimal performance
-                    and cross-platform compatibility.
-                  </p>
-                </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Mobile Development</span>
+                <span class="skill-percent">95%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 95%"></div>
               </div>
             </div>
-
-            <div class="col-md-4 col-xs-11 wow fadeInUp" data-wow-delay="0.6s">
-              <div class="media">
-                <div class="media-object media-left">
-                  <i class="fa fa-link"></i>
-                </div>
-                <div class="media-body">
-                  <h3 class="media-heading">Back-End Development</h3>
-                  <p>
-                    I develop scalable back-end systems using Spring Boot or
-                    Node.js, focusing on robust APIs and efficient data
-                    management.
-                  </p>
-                </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Backend Development</span>
+                <span class="skill-percent">75%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 75%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">React Native & Expo</span>
+                <span class="skill-percent">90%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- end work -->
+    </section>
 
-      <!-- start about -->
-      <div id="about" class="section">
-        <div class="container">
-          <div class="row">
-            <div
-              class="col-md-6 col-xs-11 wow fadeInLeft"
-              data-wow-delay="0.3s"
-            >
-              <h2>ABOUT Kenza</h2>
-              <h4>Web &AMP; Mobile DEVELOPER</h4>
-              <p>
-                I am a passionate developer specializing in building responsive
-                and modern web and mobile applications. With expertise in
-                front-end and back-end technologies, I strive to deliver
-                scalable and efficient solutions.
+    <!-- Services Section -->
+    <section class="services" id="services">
+      <div class="container">
+        <h2 class="section-title">What I Do</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3>Frontend Web Development</h3>
+            <p>
+              I create responsive and modern websites using cutting-edge
+              technologies like React.js, Next.js, and modern CSS frameworks. My
+              focus is on delivering seamless user experiences with
+              pixel-perfect designs.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3>Mobile App Development</h3>
+            <p>
+              I build high-performance, cross-platform mobile applications using
+              React Native and Expo. From concept to deployment, I ensure
+              optimal performance and user-friendly interfaces.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-server"></i>
+            </div>
+            <h3>Backend Development</h3>
+            <p>
+              I develop scalable backend systems using Spring Boot and Node.js,
+              focusing on robust APIs, efficient data management, and secure
+              authentication systems that power your applications.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="portfolio-grid">
+          <div class="portfolio-item">
+            <div class="portfolio-image">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">Beedumy Mobile App</h3>
+              <p class="portfolio-company">Institut Poincare</p>
+              <p class="portfolio-description">
+                Developed a comprehensive mobile application for educational
+                services, providing students with seamless access to learning
+                resources and course management.
               </p>
-              <p>
-                My work involves crafting seamless user experiences using
-                technologies like React.js, Next.js, and React Native, while
-                building robust back-end systems with Spring Boot and Node.js.
-              </p>
-              <!-- Download CV Links -->
-              <p>
+              <div class="portfolio-tech">
+                <span class="tech-tag">Expo</span>
+                <span class="tech-tag">React Native</span>
+                <span class="tech-tag">Mobile</span>
+              </div>
+              <div class="portfolio-links">
                 <a
-                  href="documents/new cv EN.pdf"
-                  download
-                  class="btn btn-secondary"
-                  >Download CV (English)</a
+                  href="https://www.beedumy.com/acceuil"
+                  target="_blank"
+                  class="portfolio-link"
                 >
-                <a
-                  href="documents/new cv.pdf"
-                  download
-                  class="btn btn-secondary"
-                  >Download CV (French)</a
-                >
+                  <i class="fas fa-external-link-alt"></i>
+                  Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-item">
+            <div class="portfolio-image">
+              <i class="fas fa-industry"></i>
+            </div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">Leo-In Platform</h3>
+              <p class="portfolio-company">LEONI Tunisia</p>
+              <p class="portfolio-description">
+                Designed and developed a comprehensive web dashboard and mobile
+                application to digitize Leoni's industrial services and
+                streamline operations.
+              </p>
+              <div class="portfolio-tech">
+                <span class="tech-tag">React Native</span>
+                <span class="tech-tag">Spring Boot</span>
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">Dashboard</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-item">
+            <div class="portfolio-image">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">Interactive Schedule Manager</h3>
+              <p class="portfolio-company">Institut Poincare</p>
+              <p class="portfolio-description">
+                Built a dynamic schedule management system with intuitive
+                interface for managing academic timetables and resource
               </p>
             </div>
-            <div
-              class="col-md-6 col-xs-11 wow fadeInRight"
-              data-wow-delay="0.3s"
-            >
-              <span class="text-top">Front Web<small>90%</small></span>
-              <div class="progress">
-                <div
-                  class="progress-bar progress-bar-danger"
-                  role="progressbar"
-                  aria-valuenow="60"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  style="width: 90%"
-                ></div>
-              </div>
-              <span>Mobile Apps <small>95%</small></span>
-              <div class="progress">
-                <div
-                  class="progress-bar progress-bar-danger"
-                  role="progressbar"
-                  aria-valuenow="80"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  style="width: 95%"
-                ></div>
-              </div>
-              <span>Back-End Development <small>75%</small></span>
-              <div class="progress">
-                <div
-                  class="progress-bar progress-bar-danger"
-                  role="progressbar"
-                  aria-valuenow="60"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  style="width: 75%"
-                ></div>
-              </div>
-              <span>React Native &AMP; Expo<small>90%</small></span>
-              <div class="progress">
-                <div
-                  class="progress-bar progress-bar-danger"
-                  role="progressbar"
-                  aria-valuenow="60"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  style="width: 90%"
-                ></div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
-      <!-- end about -->
-
-      <!-- start portfolio -->
-      <div id="portfolio" class="section">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <h2 class="wow bounce">PORTFOLIO</h2>
-            </div>
-            <div class="col-md-4 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-              <div class="portfolio-thumb">
-                <img
-                  src="images/portfolio-img1.jpg"
-                  class="img-responsive"
-                  alt="portfolio img"
-                />
-                <div class="portfolio-overlay">
-                  <h3>Beedumy Front Mobile</h3>
-                  <h5>
-                    Company:<a
-                      href="https://www.facebook.com/institutpoincare1"
-                      target="_blank"
-                    >
-                      Institut Poincare</a
-                    >
-                  </h5>
-                  <h4>
-                    <strong>Link:</strong>
-                    <a href="https://www.beedumy.com/acceuil" target="_blank"
-                      >Beedumy</a
-                    >
-                  </h4>
-                  <h5 class="technologies">
-                    <strong>Technologies:</strong> Expo, React Native
-                  </h5>
-
-                  <h5 class="date">
-                    <strong>Start Date:</strong> August 2024<br />
-                    <strong>End Date:</strong> October 2024
-                  </h5>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-              <div class="portfolio-thumb">
-                <img
-                  src="images/portfolio-img2.png"
-                  class="img-responsive"
-                  alt="portfolio img"
-                  style="
-                    background-color: rgb(255, 255, 255);
-                    padding: 20px;
-                    min-height: 300px;
-                  "
-                />
-                <div class="portfolio-overlay">
-                  <h3>Leo-In</h3>
-                  <h5>
-                    Company:<a href="https://www.leoni.com" target="_blank">
-                      LEONI Tunisia</a
-                    >
-                  </h5>
-                  <p>
-                    During my internship, I designed and developed a web
-                    (Dashboard) and mobile application to digitize Leoni's
-                    services.
-                  </p>
-                  <h5 class="technologies">
-                    <strong>Technologies:</strong> Expo, React Native,
-                    SpringBoot, NextJs
-                  </h5>
-
-                  <h5 class="date">
-                    <strong>Start Date:</strong> September 2024<br />
-                    <strong>End Date:</strong> October 2024
-                  </h5>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-              <div class="portfolio-thumb">
-                <img
-                  src="images/portfolio-img1.jpg"
-                  class="img-responsive"
-                  alt="portfolio img"
-                />
-                <div class="portfolio-overlay">
-                  <h3>Beedumy Front Web</h3>
-                  <h5>
-                    Company:<a
-                      href="https://www.facebook.com/institutpoincare1"
-                      target="_blank"
-                    >
-                      Institut Poincare</a
-                    >
-                  </h5>
-                  <h4>
-                    <strong>Link:</strong>
-                    <a href="https://www.beedumy.com" target="_blank"
-                      >Beedumy</a
-                    >
-                  </h4>
-                  <h5 class="technologies">
-                    <strong>Technologies:</strong> Expo
-                  </h5>
-                  <br />
-                  <h5 class="date">
-                    <strong>Start Date:</strong> September 2024<br />
-                    <strong>End Date:</strong> October 2024
-                  </h5>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-              <div class="portfolio-thumb">
-                <img
-                  src="images/portfolio-img3.png"
-                  class="img-responsive"
-                  alt="portfolio img"
-                />
-                <div class="portfolio-overlay">
-                  <h3>Communication Front Web</h3>
-                  <h5>
-                    Company:<a
-                      href="https://www.facebook.com/institutpoincare1"
-                      target="_blank"
-                    >
-                      Institut Poincare</a
-                    >
-                  </h5>
-
-                  <h5 class="technologies">
-                    <strong>Technologies:</strong> HTML,CSS,JavaScript
-                  </h5>
-                  <br />
-                  <h5 class="date">
-                    <strong>Start Date:</strong> October 2024<br />
-                    <strong>End Date:</strong> October 2024
-                  </h5>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-              <div class="portfolio-thumb">
-                <img
-                  src="images/schedule.png"
-                  class="img-responsive"
-                  alt="portfolio img"
-                />
-                <div class="portfolio-overlay">
-                  <h3>Week Schedule</h3>
-                  <h5>
-                    Company:<a
-                      href="https://www.facebook.com/institutpoincare1"
-                      target="_blank"
-                    >
-                      Institut Poincare</a
-                    >
-                  </h5>
-                  <h4>
-                    <strong>Link:</strong>
-                    <a
-                      href="https://kenza-ben-ayed.github.io/ScheduleByKenza.github.io/"
-                      target="_blank"
-                      >Schedule in production</a
-                    >
-                  </h4>
-
-                  <h5 class="technologies">
-                    <strong>Technologies:</strong> HTML,CSS,JavaScript
-                  </h5>
-                  <br />
-                  <!-- <h5 class="date">
-                    <strong>Start Date:</strong> October 2024<br />
-                    <strong>End Date:</strong> October 2024
-                  </h5> -->
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-              <div class="portfolio-thumb">
-                <img
-                  src="images/toolbox.png"
-                  class="img-responsive"
-                  alt="portfolio img"
-                />
-                <div class="portfolio-overlay">
-                  <h3>ToolBox Screen</h3>
-                  <h5>
-                    Company:<a
-                      href="https://www.facebook.com/institutpoincare1"
-                      target="_blank"
-                    >
-                      Institut Poincare</a
-                    >
-                  </h5>
-                  <h4>
-                    <strong>Link:</strong>
-                    <a
-                      href="https://kenza-ben-ayed.github.io/ToolBoxInterface.github.io/"
-                      target="_blank"
-                      >Schedule in production</a
-                    >
-                  </h4>
-
-                  <h5 class="technologies">
-                    <strong>Technologies:</strong> HTML,CSS,JavaScript
-                  </h5>
-                  <br />
-                  <!-- <h5 class="date">
-                    <strong>Start Date:</strong> October 2024<br />
-                    <strong>End Date:</strong> October 2024
-                  </h5> -->
-                </div>
-              </div>
-            </div>
-            <!-- <div class="col-md-6 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-              <div class="portfolio-thumb">
-                <img
-                  src="images/portfolio-img5.jpg"
-                  class="img-responsive"
-                  alt="portfolio img"
-                />
-                <div class="portfolio-overlay">
-                  <h4>New Animation</h4>
-                  <h5>Author: Kathy</h5>
-                </div>
-              </div>
-            </div> -->
-          </div>
-        </div>
-      </div>
-      <!-- end portfolio -->
-
-      <!-- start contact -->
-      <div id="contact" class="section">
-        <div class="container">
-          <div class="row">
-            <div
-              class="col-lg-5 col-lg-offset-1 col-md-6 wow fadeInUp"
-              data-wow-delay="0.6s"
-            >
-              <address>
-                <p class="contact-title">CONTACT ME</p>
-                <p><i class="fa fa-phone"></i> +216-22459159</p>
-                <p><i class="fa fa-envelope-o"></i> btazanka@gmail.com</p>
-                <p>
-                  <i class="fa fa-map-marker"></i> El kram WEST tunis, Tunisia
-                  2089
-                </p>
-              </address>
-            </div>
-            <div
-              class="col-lg-6 col-md-6 col-xs-10 wow fadeInUp"
-              data-wow-delay="0.6s"
-            >
-              <form
-                role="form"
-                method="post"
-                action="https://formspree.io/f/mwppbykg"
-              >
-                <input
-                  name="name"
-                  type="text"
-                  class="form-control"
-                  id="name"
-                  placeholder="Your Name"
-                />
-                <input
-                  name="email"
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  placeholder="Your Email"
-                />
-                <textarea
-                  name="message"
-                  rows="5"
-                  class="form-control"
-                  id="message"
-                  placeholder="Your Message"
-                ></textarea>
-                <input
-                  name="send"
-                  type="submit"
-                  class="form-control"
-                  id="send"
-                  value="SEND ME"
-                />
-              </form>
-            </div>
-            <div class="col-md-1 col-sm-1"></div>
-          </div>
-        </div>
-      </div>
-      <!-- end contact -->
-
-      <!-- start footer -->
-      <footer>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12 wow fadeIn" data-wow-delay="0.9s">
-              <p></p>
-              <hr />
-              <ul class="social-icon">
-                <li>
-                  <a
-                    href="https://www.facebook.com/kenza.benayed.3323/"
-                    class="fa fa-facebook"
-                    target="_blank"
-                  ></a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.linkedin.com/in/kenza-ben-ayed-92592a257/"
-                    class="fa fa-linkedin"
-                    target="_blank"
-                  ></a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.instagram.com/kanzouza__/"
-                    class="fa fa-instagram"
-                    target="_blank"
-                  ></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
-      <!-- end footer -->
-    </div>
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-    <!-- bootstrap -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- fullpage -->
-    <script src="js/jquery.fullPage.js"></script>
-    <!-- smoothScroll -->
-    <script src="js/smoothscroll.js"></script>
-    <!-- wow -->
-    <script src="js/wow.min.js"></script>
-    <!-- text rotater -->
-    <script src="js/jquery.simple-text-rotator.js"></script>
-    <!-- custom -->
-    <script src="js/custom.js"></script>
-    <!-- Font-Awesome -->
-
-    <script
-      src="https://kit.fontawesome.com/63cf21ff43.js"
-      crossorigin="anonymous"
-    ></script>
+    </section>
   </body>
 </html>
