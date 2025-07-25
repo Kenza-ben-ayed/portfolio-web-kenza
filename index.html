@@ -278,6 +278,10 @@
         position: relative;
         opacity: 0;
         animation: slideUp 1s ease 1s forwards;
+        /* gap: 2rem;
+        flex-direction: column;
+        display: flex;
+        justify-content: center; */
       }
 
       .floating-card {
@@ -287,6 +291,7 @@
         padding: 2rem;
         border: 1px solid rgba(255, 255, 255, 0.1);
         animation: float 6s ease-in-out infinite;
+        text-align: center;
       }
 
       .floating-card:nth-child(2) {
@@ -1096,8 +1101,39 @@
             </a>
           </div>
         </div>
-        <div class="hero-visual">
-          <div class="floating-card">
+        <div class="floating-card">
+          <h3 data-en="Technologies" data-fr="Technologies">Technologies</h3>
+          <div class="tech-stack">
+            <div class="tech-item">
+              <i class="fab fa-node-js"></i>
+              <p>Node.js</p>
+            </div>
+            <div class="tech-item">
+              <i class="fas fa-leaf"></i>
+              <p>Spring Boot</p>
+            </div>
+            <!-- <div class="tech-item">
+              <i class="fab fa-html5"></i>
+              <p>HTML5</p>
+            </div> -->
+            <div class="tech-item">
+              <i class="fab fa-php"></i>
+              <p>PHP</p>
+            </div>
+            <div class="tech-item">
+              <i class="fab fa-react"></i>
+              <p>React Native</p>
+            </div>
+            <div class="tech-item">
+              <i class="fab fa-react"></i>
+              <p>React.js</p>
+            </div>
+            <div class="tech-item">
+              <i class="fab fa-js"></i>
+              <p>Next.js</p>
+            </div>
+          </div>
+          <!-- <div class="floating-card">
             <h3 data-en="Frontend Excellence" data-fr="Excellence Frontend">
               Frontend Excellence
             </h3>
@@ -1115,7 +1151,7 @@
                 <p>React Native</p>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -2042,6 +2078,7 @@
         const heroTitle = document.querySelector(".hero-content h1");
         if (heroTitle) {
           const originalText = heroTitle.textContent;
+          originalText.classList.add("name-highlight");
           setTimeout(() => {
             typeWriter(heroTitle, originalText, 50);
           }, 1000);
