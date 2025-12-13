@@ -1,7 +1,12 @@
 self.__BUILD_MANIFEST = {
   "__rewrites": {
     "afterFiles": [],
-    "beforeFiles": [],
+    "beforeFiles": [
+      {
+        "source": "/portfolio-web-kenza//_next/:path+",
+        "destination": "/portfolio-web-kenza/_next/:path+"
+      }
+    ],
     "fallback": []
   },
   "sortedPages": [
