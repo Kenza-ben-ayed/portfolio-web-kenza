@@ -1,17 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>Kenza Ben Ayed | Full Stack Developer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kenza Ben Ayed - Full Stack Developer</title>
+    <link rel="icon" type="image/png" href="/logo kenza.png" />
     <style>
       * {
         margin: 0;
@@ -19,49 +12,38 @@
         box-sizing: border-box;
       }
 
-      :root {
-        --primary-color: #6366f1;
-        --secondary-color: #f59e0b;
-        --accent-color: #10b981;
-        --text-primary: #ffffff;
-        --text-secondary: #e5e7eb;
-        --text-muted: #9ca3af;
-        --bg-primary: #0f172a;
-        --bg-secondary: #1e293b;
-        --bg-card: #334155;
-        --gradient-1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-        --gradient-2: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
-        --gradient-3: linear-gradient(135deg, #10b981 0%, #059669 100%);
-      }
-
       body {
-        font-family: "Inter", sans-serif;
-        background: var(--bg-primary);
-        color: var(--text-primary);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: linear-gradient(
+          135deg,
+          #1e293b 0%,
+          #581c87 50%,
+          #1e293b 100%
+        );
+        color: white;
         overflow-x: hidden;
       }
 
       /* Navigation */
-      .navbar {
+      nav {
         position: fixed;
         top: 0;
         width: 100%;
-        background: rgba(15, 23, 42, 0.95);
-        backdrop-filter: blur(20px);
         z-index: 1000;
-        padding: 1rem 0;
         transition: all 0.3s ease;
       }
 
-      .navbar.scrolled {
-        background: rgba(15, 23, 42, 0.98);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      nav.scrolled {
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 4px 20px rgba(168, 85, 247, 0.1);
       }
 
       .nav-container {
-        max-width: 1200px;
+        max-width: 1280px;
         margin: 0 auto;
-        padding: 0 2rem;
+        padding: 1rem 2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -69,71 +51,55 @@
 
       .logo {
         font-size: 1.5rem;
-        font-weight: 700;
-        background: var(--gradient-1);
+        font-weight: bold;
+        background: linear-gradient(to right, #c084fc, #ec4899);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
 
-      .nav-links {
+      .nav-menu {
         display: flex;
-        list-style: none;
         gap: 2rem;
-        align-items: center;
+        list-style: none;
       }
 
-      .nav-links a {
-        color: var(--text-secondary);
+      .nav-menu a {
+        color: white;
         text-decoration: none;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        position: relative;
+        transition: color 0.3s;
       }
 
-      .nav-links a:hover {
-        color: var(--primary-color);
+      .nav-menu a:hover,
+      .nav-menu a.active {
+        color: #c084fc;
       }
 
-      .nav-links a::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--gradient-1);
-        transition: width 0.3s ease;
-      }
-
-      .nav-links a:hover::after {
-        width: 100%;
-      }
-
-      .language-switch {
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 25px;
-        padding: 0.5rem 1rem;
-        color: var(--text-secondary);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-size: 0.9rem;
+      .lang-switcher {
         display: flex;
-        align-items: center;
         gap: 0.5rem;
+        align-items: center;
       }
 
-      .language-switch:hover {
-        background: rgba(255, 255, 255, 0.2);
-        color: var(--text-primary);
+      .lang-btn {
+        padding: 0.25rem 0.75rem;
+        background: transparent;
+        border: none;
+        color: white;
+        cursor: pointer;
+        border-radius: 0.375rem;
+        transition: background 0.3s;
+      }
+
+      .lang-btn.active {
+        background: #7c3aed;
       }
 
       .mobile-menu-btn {
         display: none;
         background: none;
         border: none;
-        color: var(--text-primary);
+        color: white;
         font-size: 1.5rem;
         cursor: pointer;
       }
@@ -143,770 +109,318 @@
         min-height: 100vh;
         display: flex;
         align-items: center;
+        justify-content: center;
+        padding: 6rem 2rem 2rem;
         position: relative;
         overflow: hidden;
       }
 
-      .hero::before {
-        content: "";
+      .hero-bg {
         position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .float-particle {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(168, 85, 247, 0.1);
+        animation: float 15s ease-in-out infinite;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: auto;
+      }
+
+      .section-title.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Timeline */
+      .timeline {
+        position: relative;
+      }
+
+      .timeline-line {
+        position: absolute;
+        left: 32px;
         top: 0;
-        left: 0;
-        right: 0;
         bottom: 0;
-        background: radial-gradient(
-            circle at 20% 50%,
-            rgba(99, 102, 241, 0.1) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 80% 20%,
-            rgba(245, 158, 11, 0.1) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 40% 80%,
-            rgba(16, 185, 129, 0.1) 0%,
-            transparent 50%
-          );
-        animation: float 20s ease-in-out infinite;
+        width: 2px;
+        background: linear-gradient(to bottom, #a855f7, #ec4899, #a855f7);
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 48px;
+        opacity: 0;
+        transform: translateX(-40px);
+        transition: all 0.7s ease;
+      }
+
+      .timeline-item.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .timeline-dot {
+        position: absolute;
+        left: 32px;
+        top: 24px;
+        width: 14px;
+        height: 14px;
+        background: #a855f7;
+        border-radius: 50%;
+        border: 4px solid #020617;
+        transform: translateX(-50%);
+      }
+
+      .card {
+        margin-left: 80px;
+        background: rgba(30, 41, 59, 0.5);
+        backdrop-filter: blur(8px);
+        border-radius: 16px;
+        padding: 24px;
+        border: 1px solid rgba(168, 85, 247, 0.2);
+        transition: transform 0.3s ease, border 0.3s ease;
+      }
+
+      .card:hover {
+        transform: scale(1.02);
+        border-color: rgba(168, 85, 247, 0.4);
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+      }
+
+      .card-header > div:first-child {
+        flex: 1;
+        min-width: 200px;
+      }
+      .title-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .title-row i {
+        color: #c084fc;
+      }
+
+      .card h3 {
+        font-size: 1.4rem;
+        color: #d8b4fe;
+      }
+
+      .company {
+        color: #d1d5db;
+        font-weight: 500;
+      }
+
+      .date {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.85rem;
+        color: #c084fc;
+        background: rgba(168, 85, 247, 0.2);
+        padding: 6px 14px;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+
+      .progress {
+        height: 4px;
+        background: #334155;
+        border-radius: 999px;
+        overflow: hidden;
+        margin-bottom: 16px;
+      }
+
+      .progress span {
+        display: block;
+        height: 100%;
+        width: 0;
+        background: linear-gradient(90deg, #a855f7, #ec4899);
+        transition: width 1s ease;
+      }
+
+      .timeline-item.visible .progress span {
+        width: 100%;
+      }
+
+      .description {
+        color: #d1d5db;
+        line-height: 1.7;
+      }
+
+      /* Mobile */
+      @media (max-width: 768px) {
+        .timeline-line,
+        .timeline-dot {
+          display: none;
+        }
+
+        .card {
+          margin-left: 0;
+        }
       }
 
       @keyframes float {
         0%,
         100% {
-          transform: translateY(0px) rotate(0deg);
+          transform: translate(0, 0);
+        }
+        25% {
+          transform: translate(-20px, 10px);
         }
         50% {
-          transform: translateY(-20px) rotate(2deg);
+          transform: translate(-10px, -10px);
+        }
+        75% {
+          transform: translate(-30px, 5px);
         }
       }
 
-      .hero-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
+      .hero-content {
+        max-width: 56rem;
+        text-align: center;
         position: relative;
-        z-index: 1;
+        z-index: 10;
       }
 
-      .hero-content h1 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        line-height: 1.1;
-        margin-bottom: 1rem;
+      .hero-greeting {
+        color: #c084fc;
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
         opacity: 0;
-        animation: slideUp 1s ease 0.2s forwards;
+        animation: fadeInUp 0.8s ease-out 0.2s forwards;
       }
-      .hero-content .name-highlight {
-        background: var(--gradient-1);
+
+      .hero-name {
+        font-size: 4rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        background: linear-gradient(to right, #c084fc, #ec4899, #c084fc);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-
-        /* 👇 Add these for stability */
-        will-change: transform;
-        display: inline-block;
-        backface-visibility: hidden;
-        transform: translateZ(0);
+        min-height: 5rem;
       }
-      .hero-content .role {
-        font-size: 1.25rem;
-        color: var(--text-secondary);
-        margin-bottom: 2rem;
+
+      .typing-cursor {
+        animation: blink 1s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .hero-title,
+      .hero-subtitle,
+      .hero-desc {
         opacity: 0;
-        animation: slideUp 1s ease 0.4s forwards;
       }
 
-      .hero-content .description {
-        font-size: 1.1rem;
-        color: var(--text-muted);
-        line-height: 1.6;
+      .hero-title {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        animation: fadeInUp 0.8s ease-out 2s forwards;
+      }
+
+      .hero-subtitle {
+        font-size: 1.5rem;
+        color: #d8b4fe;
+        margin-bottom: 1.5rem;
+        animation: fadeInUp 0.8s ease-out 2.2s forwards;
+      }
+
+      .hero-desc {
+        color: #d1d5db;
+        font-size: 1.125rem;
         margin-bottom: 2rem;
-        opacity: 0;
-        animation: slideUp 1s ease 0.6s forwards;
+        max-width: 42rem;
+        margin-left: auto;
+        margin-right: auto;
+        animation: fadeInUp 0.8s ease-out 2.4s forwards;
       }
 
-      .cta-buttons {
+      .hero-buttons {
         display: flex;
         gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
         opacity: 0;
-        animation: slideUp 1s ease 0.8s forwards;
+        animation: fadeInUp 0.8s ease-out 2.6s forwards;
+      }
+
+      .btn {
+        padding: 0.75rem 2rem;
+        border-radius: 9999px;
+        font-weight: 600;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-block;
       }
 
       .btn-primary {
-        background: var(--gradient-1);
+        background: linear-gradient(to right, #7c3aed, #ec4899);
         color: white;
-        border: none;
-        padding: 1rem 2rem;
-        border-radius: 50px;
-        font-weight: 600;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
       }
 
       .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        box-shadow: 0 10px 40px rgba(168, 85, 247, 0.5);
+        transform: scale(1.05);
       }
 
       .btn-secondary {
-        background: transparent;
-        color: var(--text-primary);
-        border: 2px solid var(--primary-color);
-        padding: 1rem 2rem;
-        border-radius: 50px;
-        font-weight: 600;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        transition: all 0.3s ease;
+        border: 2px solid #c084fc;
+        color: white;
       }
 
       .btn-secondary:hover {
-        background: var(--primary-color);
-        transform: translateY(-2px);
-      }
-
-      .hero-visual {
-        position: relative;
-        opacity: 0;
-        animation: slideUp 1s ease 1s forwards;
-        /* gap: 2rem;
-        flex-direction: column;
-        display: flex;
-        justify-content: center; */
-      }
-
-      .floating-card {
-        background: rgba(51, 65, 85, 0.6);
-        backdrop-filter: blur(20px);
-        border-radius: 20px;
-        padding: 2rem;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        animation: float 6s ease-in-out infinite;
-        text-align: center;
-      }
-
-      .floating-card:nth-child(2) {
-        animation-delay: -2s;
-      }
-
-      .floating-card:nth-child(3) {
-        animation-delay: -4s;
-      }
-
-      .tech-stack {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-        margin-top: 2rem;
-      }
-
-      .tech-item {
-        background: rgba(255, 255, 255, 0.05);
-        padding: 1rem;
-        border-radius: 10px;
-        text-align: center;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .tech-item:hover {
-        background: rgba(255, 255, 255, 0.1);
-        transform: translateY(-5px);
-      }
-
-      .tech-item i {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-        background: var(--gradient-1);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      /* About Section */
-      .about {
-        padding: 6rem 0;
-        background: var(--bg-secondary);
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-      }
-
-      .section-title {
-        text-align: center;
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 3rem;
-        background: var(--gradient-1);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .about-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
-      }
-
-      .about-text {
-        font-size: 1.1rem;
-        line-height: 1.7;
-        color: var(--text-secondary);
-      }
-
-      .about-text h3 {
-        color: var(--text-primary);
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-      }
-
-      .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-      }
-
-      .skill-item {
-        background: rgba(255, 255, 255, 0.05);
-        padding: 1.5rem;
-        border-radius: 15px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: all 0.3s ease;
-      }
-
-      .skill-item:hover {
-        background: rgba(255, 255, 255, 0.1);
-        transform: translateY(-5px);
-      }
-
-      .skill-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 1rem;
-      }
-
-      .skill-name {
-        font-weight: 600;
-        color: var(--text-primary);
-      }
-
-      .skill-percent {
-        color: var(--primary-color);
-        font-weight: 600;
-      }
-
-      .skill-bar {
-        height: 6px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 3px;
-        overflow: hidden;
-      }
-
-      .skill-progress {
-        height: 100%;
-        background: var(--gradient-1);
-        border-radius: 3px;
-        transition: width 1s ease;
-      }
-
-      /* Education Section */
-      .education {
-        padding: 6rem 0;
-      }
-
-      .timeline {
-        position: relative;
-        max-width: 800px;
-        margin: 0 auto;
-      }
-
-      .timeline::after {
-        content: "";
-        position: absolute;
-        width: 2px;
-        background: var(--gradient-1);
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -1px;
-      }
-
-      .timeline-item {
-        padding: 10px 40px;
-        position: relative;
-        background-color: inherit;
-        width: 50%;
-      }
-
-      .timeline-item::after {
-        content: "";
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        right: -10px;
-        background: var(--gradient-1);
-        border-radius: 50%;
-        top: 15px;
-      }
-
-      .timeline-item:nth-child(even) {
-        left: 50%;
-      }
-
-      .timeline-item:nth-child(even)::after {
-        left: -10px;
-      }
-
-      .timeline-content {
-        background: rgba(51, 65, 85, 0.4);
-        backdrop-filter: blur(20px);
-        padding: 2rem;
-        border-radius: 15px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        position: relative;
-      }
-
-      .timeline-date {
-        color: var(--primary-color);
-        font-weight: 600;
-        font-size: 0.9rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .timeline-title {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 0.5rem;
-      }
-
-      .timeline-subtitle {
-        color: var(--text-secondary);
-        font-size: 1rem;
-        margin-bottom: 1rem;
-      }
-
-      .timeline-description {
-        color: var(--text-muted);
-        line-height: 1.6;
-      }
-
-      /* Experience Section */
-      .experience {
-        padding: 6rem 0;
-        background: var(--bg-secondary);
-      }
-
-      .experience-grid {
-        display: grid;
-        gap: 2rem;
-      }
-
-      .experience-item {
-        background: rgba(51, 65, 85, 0.4);
-        backdrop-filter: blur(20px);
-        padding: 2.5rem;
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: all 0.3s ease;
-      }
-
-      .experience-item:hover {
-        transform: translateY(-5px);
-        background: rgba(51, 65, 85, 0.6);
-      }
-
-      .experience-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 1.5rem;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-
-      .experience-info h3 {
-        font-size: 1.4rem;
-        color: var(--text-primary);
-        margin-bottom: 0.5rem;
-      }
-
-      .experience-company {
-        color: var(--primary-color);
-        font-weight: 600;
-        font-size: 1.1rem;
-      }
-
-      .experience-date {
-        color: var(--text-secondary);
-        font-weight: 500;
-        background: rgba(99, 102, 241, 0.2);
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-size: 0.9rem;
-      }
-
-      .experience-description {
-        color: var(--text-muted);
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-      }
-
-      .achievements-list {
-        list-style: none;
-        margin-bottom: 1.5rem;
-      }
-
-      .achievements-list li {
-        color: var(--text-secondary);
-        margin-bottom: 0.8rem;
-        padding-left: 1.5rem;
-        position: relative;
-        line-height: 1.5;
-      }
-
-      .achievements-list li::before {
-        content: "✦";
-        color: var(--primary-color);
-        position: absolute;
-        left: 0;
-        top: 0;
-      }
-
-      .tech-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-
-      .tech-tag {
-        background: rgba(99, 102, 241, 0.2);
-        color: var(--primary-color);
-        padding: 0.3rem 0.8rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 500;
-      }
-
-      /* Services Section */
-      .services {
-        padding: 6rem 0;
-      }
-
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-      }
-
-      .service-card {
-        background: rgba(51, 65, 85, 0.4);
-        backdrop-filter: blur(20px);
-        padding: 2.5rem;
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .service-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: var(--gradient-1);
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
-      }
-
-      .service-card:hover::before {
-        transform: scaleX(1);
-      }
-
-      .service-card:hover {
-        transform: translateY(-10px);
-        background: rgba(51, 65, 85, 0.6);
-      }
-
-      .service-icon {
-        width: 60px;
-        height: 60px;
-        background: var(--gradient-1);
-        border-radius: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.5rem;
-      }
-
-      .service-icon i {
-        font-size: 1.5rem;
-        color: white;
-      }
-
-      .service-card h3 {
-        font-size: 1.3rem;
-        margin-bottom: 1rem;
-        color: var(--text-primary);
-      }
-
-      .service-card p {
-        color: var(--text-secondary);
-        line-height: 1.6;
-      }
-
-      /* Portfolio Section */
-      .portfolio {
-        padding: 6rem 0;
-        background: var(--bg-secondary);
-      }
-
-      .portfolio-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        gap: 2rem;
-      }
-
-      .portfolio-item {
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 20px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        position: relative;
-      }
-
-      .portfolio-item:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      }
-
-      .portfolio-image {
-        height: 250px;
-        background: var(--gradient-1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .portfolio-image i {
-        font-size: 3rem;
-        color: white;
-        opacity: 0.8;
-      }
-
-      .portfolio-content {
-        padding: 2rem;
-      }
-
-      .portfolio-title {
-        font-size: 1.3rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        color: var(--text-primary);
-      }
-
-      .portfolio-company {
-        color: var(--primary-color);
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
-      }
-
-      .portfolio-description {
-        color: var(--text-secondary);
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-      }
-
-      .portfolio-tech {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .portfolio-links {
-        display: flex;
-        gap: 1rem;
-      }
-
-      .portfolio-link {
-        color: var(--primary-color);
-        text-decoration: none;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        transition: all 0.3s ease;
-      }
-
-      .portfolio-link:hover {
-        color: var(--text-primary);
-      }
-
-      /* Contact Section */
-      .contact {
-        padding: 6rem 0;
-      }
-
-      .contact-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-      }
-
-      .contact-info {
-        space-y: 2rem;
-      }
-
-      .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 2rem;
-      }
-
-      .contact-icon {
-        width: 50px;
-        height: 50px;
-        background: var(--gradient-1);
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-      }
-
-      .contact-icon i {
-        color: white;
-        font-size: 1.2rem;
-      }
-
-      .contact-details h4 {
-        color: var(--text-primary);
-        margin-bottom: 0.5rem;
-      }
-
-      .contact-details {
-        text-decoration: none;
-        text-transform: none;
-      }
-
-      .contact-details p {
-        color: var(--text-secondary);
-      }
-
-      .contact-form {
-        background: rgba(51, 65, 85, 0.4);
-        backdrop-filter: blur(20px);
-        padding: 2.5rem;
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .form-group {
-        margin-bottom: 1.5rem;
-      }
-
-      .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        color: var(--text-primary);
-        font-weight: 500;
-      }
-
-      .form-group input,
-      .form-group textarea {
-        width: 100%;
-        padding: 1rem;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 10px;
-        color: var(--text-primary);
-        font-family: inherit;
-        transition: all 0.3s ease;
-      }
-
-      .form-group input::placeholder,
-      .form-group textarea::placeholder {
-        color: var(--text-muted);
-      }
-
-      .form-group input:focus,
-      .form-group textarea:focus {
-        outline: none;
-        border-color: var(--primary-color);
-        background: rgba(255, 255, 255, 0.1);
-      }
-
-      .form-group textarea {
-        resize: vertical;
-        min-height: 120px;
-      }
-
-      /* Footer */
-      .footer {
-        background: var(--bg-secondary);
-        padding: 3rem 0 2rem;
-        text-align: center;
+        background: rgba(192, 132, 252, 0.1);
       }
 
       .social-links {
         display: flex;
+        gap: 1.5rem;
         justify-content: center;
-        gap: 1rem;
-        margin-bottom: 2rem;
+        margin-top: 3rem;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out 2.8s forwards;
       }
 
-      .social-link {
-        width: 50px;
-        height: 50px;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--text-secondary);
-        text-decoration: none;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .social-link:hover {
-        background: var(--primary-color);
+      .social-links a {
         color: white;
-        transform: translateY(-5px);
+        transition: all 0.3s;
       }
 
-      /* Animations */
-      @keyframes slideUp {
+      .social-links a:hover {
+        color: #c084fc;
+        transform: scale(1.1);
+      }
+
+      @keyframes fadeInUp {
         from {
           opacity: 0;
-          transform: translateY(30px);
+          transform: translateY(20px);
         }
         to {
           opacity: 1;
@@ -914,434 +428,700 @@
         }
       }
 
-      /* Responsive */
-      @media (max-width: 1024px) {
-        .timeline::after {
-          left: 31px;
-        }
+      /* About Section */
+      .section {
+        min-height: 100vh;
+        padding: 5rem 2rem;
+        position: relative;
+      }
 
-        .timeline-item {
-          width: 100%;
-          padding-left: 70px;
-          padding-right: 25px;
-        }
+      .section-title {
+        font-size: 3rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 4rem;
+        background: linear-gradient(to right, #c084fc, #ec4899, #c084fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
 
-        .timeline-item::after {
-          left: 21px;
-        }
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+      }
 
-        .timeline-item:nth-child(even) {
-          left: 0%;
+      .grid {
+        display: grid;
+        gap: 2rem;
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+
+      .card {
+        background: rgba(30, 41, 59, 0.8);
+        backdrop-filter: blur(16px);
+        border-radius: 1rem;
+        padding: 2rem;
+        border: 1px solid rgba(168, 85, 247, 0.3);
+        transition: all 0.3s;
+      }
+
+      .card:hover {
+        border-color: rgba(168, 85, 247, 0.6);
+        box-shadow: 0 20px 60px rgba(168, 85, 247, 0.2);
+      }
+
+      .language-skill {
+        margin-bottom: 1.5rem;
+      }
+
+      .language-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+      }
+
+      .language-name {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+      }
+
+      .language-level {
+        font-size: 0.875rem;
+        color: #d8b4fe;
+        background: rgba(124, 58, 237, 0.2);
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+      }
+
+      .progress-bar {
+        height: 0.625rem;
+        background: rgba(71, 85, 105, 0.5);
+        border-radius: 9999px;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        border-radius: 9999px;
+        transition: width 1s ease-out;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .progress-fill::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.2);
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      /* Projects Section */
+      .project-card {
+        background: linear-gradient(
+          135deg,
+          rgba(30, 41, 59, 0.8),
+          rgba(15, 23, 42, 0.8)
+        );
+        backdrop-filter: blur(16px);
+        border-radius: 1.5rem;
+        overflow: hidden;
+        border: 1px solid rgba(168, 85, 247, 0.3);
+        transition: all 0.7s;
+      }
+
+      .project-card:hover {
+        border-color: rgba(168, 85, 247, 0.6);
+        box-shadow: 0 20px 60px rgba(168, 85, 247, 0.2);
+      }
+
+      .project-image-container {
+        position: relative;
+        height: 14rem;
+        background: linear-gradient(
+          135deg,
+          rgba(124, 58, 237, 0.2),
+          rgba(236, 72, 153, 0.2)
+        );
+        overflow: hidden;
+      }
+
+      .project-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+        cursor: pointer;
+      }
+
+      .project-card:hover .project-image {
+        transform: scale(1.1);
+      }
+
+      .image-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.6);
+        border: none;
+        color: white;
+        padding: 0.5rem;
+        border-radius: 50%;
+        cursor: pointer;
+        opacity: 0;
+        transition: all 0.3s;
+        backdrop-filter: blur(4px);
+      }
+
+      .project-card:hover .image-nav {
+        opacity: 1;
+      }
+
+      .image-nav:hover {
+        background: rgba(0, 0, 0, 0.8);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .image-nav.prev {
+        left: 0.75rem;
+      }
+
+      .image-nav.next {
+        right: 0.75rem;
+      }
+
+      .image-counter {
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+      }
+
+      .image-indicators {
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        display: flex;
+        gap: 0.375rem;
+      }
+
+      .indicator {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .indicator.active {
+        width: 2rem;
+        background: #c084fc;
+      }
+
+      .expand-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(0, 0, 0, 0.5);
+        border: none;
+        color: white;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        opacity: 0;
+        transition: all 0.3s;
+        backdrop-filter: blur(4px);
+      }
+
+      .project-card:hover .expand-btn {
+        opacity: 1;
+      }
+
+      .project-content {
+        padding: 1.5rem;
+      }
+
+      .project-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 0.75rem;
+        background: linear-gradient(to right, #d8b4fe, #f9a8d4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .project-desc {
+        color: #d1d5db;
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .tech-tag {
+        font-size: 0.75rem;
+        background: linear-gradient(
+          to right,
+          rgba(124, 58, 237, 0.2),
+          rgba(236, 72, 153, 0.2)
+        );
+        color: #d8b4fe;
+        padding: 0.375rem 0.75rem;
+        border-radius: 9999px;
+        border: 1px solid rgba(168, 85, 247, 0.2);
+        transition: all 0.3s;
+      }
+
+      .tech-tag:hover {
+        border-color: rgba(168, 85, 247, 0.4);
+        transform: scale(1.05);
+      }
+
+      .project-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #c084fc;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .project-link:hover {
+        color: #d8b4fe;
+      }
+
+      /* Skills Section */
+      .skill-category {
+        margin-bottom: 1.5rem;
+      }
+
+      .skill-category h4 {
+        color: #d8b4fe;
+        margin-bottom: 1rem;
+        font-size: 1.125rem;
+      }
+
+      .skill-item {
+        margin-bottom: 1rem;
+      }
+
+      .skill-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+        font-size: 0.875rem;
+      }
+
+      /* Lightbox */
+      .lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(8px);
+        z-index: 2000;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        animation: fadeIn 0.3s;
+      }
+
+      .lightbox.active {
+        display: flex;
+      }
+
+      .lightbox-content {
+        max-width: 90vw;
+        max-height: 90vh;
+        position: relative;
+      }
+
+      .lightbox-image {
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 0.5rem;
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: white;
+        padding: 0.75rem;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s;
+        z-index: 10;
+      }
+
+      .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: rotate(90deg);
+      }
+
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: white;
+        padding: 1rem;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s;
+        z-index: 10;
+      }
+
+      .lightbox-nav:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .lightbox-nav.prev {
+        left: 1rem;
+      }
+
+      .lightbox-nav.next {
+        right: 1rem;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
         }
       }
 
+      /* Responsive */
       @media (max-width: 768px) {
+        .nav-menu {
+          display: none;
+        }
+
         .mobile-menu-btn {
           display: block;
         }
 
-        .nav-links {
-          display: none;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          right: 0;
-          background: var(--bg-secondary);
-          flex-direction: column;
-          padding: 2rem;
-          gap: 1rem;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-links.active {
-          display: flex;
-        }
-
-        .hero-container {
-          grid-template-columns: 1fr;
-          text-align: center;
-        }
-
-        .hero-content h1 {
+        .hero-name {
           font-size: 2.5rem;
         }
 
-        .about-grid,
-        .contact-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .skills-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .cta-buttons {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .experience-header {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .portfolio-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .services-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .tech-stack {
-          grid-template-columns: repeat(2, 1fr);
-        }
-         .hero{
-                        padding-top: 6rem;
-        }
-
-      }
-
-      @media (max-width: 480px) {
-        .container {
-          padding: 0 1rem;
-        }
-
-        .nav-container {
-          padding: 0 1rem;
-        }
-
-        .hero-container {
-          padding: 0 1rem;
-
-
+        .hero-title {
+          font-size: 1.75rem;
         }
 
         .section-title {
           font-size: 2rem;
         }
+      }
 
-        .hero-content h1 {
-          font-size: 2rem;
-        }
-        .hero{
-                        padding-top: 6rem;
-        }
+      .scroll-indicator {
+        margin-top: 4rem;
+        animation: bounce 2s infinite;
+      }
 
-        .timeline-item {
-          padding-left: 60px;
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
         }
       }
     </style>
   </head>
   <body>
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav id="nav">
       <div class="nav-container">
-        <div class="logo">KB</div>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#home" data-en="Home" data-fr="Accueil">Home</a></li>
-          <li><a href="#about" data-en="About" data-fr="À propos">About</a></li>
+        <div class="logo">Kenza</div>
+        <ul class="nav-menu" id="navMenu">
           <li>
-            <a href="#education" data-en="Education" data-fr="Formation"
-              >Education</a
+            <a href="#home" data-i18n="nav.home" class="nav-link active"
+              >Home</a
             >
           </li>
           <li>
-            <a href="#experience" data-en="Experience" data-fr="Expérience"
+            <a href="#about" data-i18n="nav.about" class="nav-link">About</a>
+          </li>
+          <li>
+            <a href="#experience" data-i18n="nav.experience" class="nav-link"
               >Experience</a
             >
           </li>
           <li>
-            <a href="#services" data-en="Services" data-fr="Services"
-              >Services</a
+            <a href="#projects" data-i18n="nav.projects" class="nav-link"
+              >Projects</a
             >
           </li>
           <li>
-            <a href="#portfolio" data-en="Portfolio" data-fr="Portfolio"
-              >Portfolio</a
-            >
+            <a href="#skills" data-i18n="nav.skills" class="nav-link">Skills</a>
           </li>
           <li>
-            <a href="#contact" data-en="Contact" data-fr="Contact">Contact</a>
+            <a href="#contact" data-i18n="nav.contact" class="nav-link"
+              >Contact</a
+            >
           </li>
         </ul>
-        <div class="language-switch" onclick="toggleLanguage()">
-          <i class="fas fa-globe"></i>
-          <span id="langText">FR</span>
+        <div class="lang-switcher">
+          <span style="margin-right: 0.5rem">🌐</span>
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="fr">FR</button>
+          <button class="lang-btn" data-lang="ar">AR</button>
         </div>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-          <i class="fas fa-bars"></i>
-        </button>
+        <button class="mobile-menu-btn">☰</button>
       </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-      <div class="hero-container">
-        <div class="hero-content">
-          <h1>
-            <span data-en="Hi, I'm " data-fr="Salut, je suis ">Hi, I'm </span
-            ><span class="name-highlight">Kenza Ben Ayed</span>
-          </h1>
-          <p
-            class="role"
-            data-en="Full Stack Developer | Mobile App Developer | Senior IT Technician"
-            data-fr="Développeuse Full Stack | Développeuse d'Applications Mobiles | Technicienne IT Senior"
+      <div class="hero-bg">
+        <!-- Floating particles will be added by JS -->
+      </div>
+      <div class="hero-content">
+        <p class="hero-greeting" data-i18n="hero.greeting" id="greeting">
+          Hi, I'm
+        </p>
+        <h1 class="hero-name" id="heroName"></h1>
+        <h2 class="hero-title" data-i18n="hero.title" id="heroTitle">
+          Full Stack Developer
+        </h2>
+        <p class="hero-subtitle" data-i18n="hero.subtitle" id="heroSubtitle">
+          Mobile & Web
+        </p>
+        <p class="hero-desc" data-i18n="hero.description" id="heroDesc">
+          Passionate about creating elegant solutions with React, React Native,
+          Next.js, and Node.js. Specialized in building scalable web and mobile
+          applications.
+        </p>
+        <div class="hero-buttons">
+          <a href="#projects" data-i18n="hero.cta" class="btn btn-primary"
+            >View My Work</a
           >
-            Full Stack Developer | Mobile App Developer | Senior IT Technician
-          </p>
-          <p
-            class="description"
-            data-en="I create exceptional digital experiences through innovative web and mobile applications. With expertise in modern technologies like React Native, Next.js, and Spring Boot, I bring ideas to life with clean code and stunning design."
-            data-fr="Je crée des expériences numériques exceptionnelles grâce à des applications web et mobiles innovantes. Avec une expertise en technologies modernes comme React Native, Next.js et Spring Boot, je donne vie aux idées avec du code propre et un design époustouflant."
+          <a
+            href="/cv.pdf"
+            data-i18n="hero.downloadCV"
+            download
+            class="btn btn-secondary"
+            >Download CV</a
           >
-            I create exceptional digital experiences through innovative web and
-            mobile applications. With expertise in modern technologies like
-            React Native, Next.js, and Spring Boot, I bring ideas to life with
-            clean code and stunning design.
-          </p>
-          <div class="cta-buttons">
-            <a href="#portfolio" class="btn-primary">
-              <i class="fas fa-eye"></i>
-              <span data-en="View My Work" data-fr="Voir Mon Travail"
-                >View My Work</span
-              >
-            </a>
-            <a href="#contact" class="btn-secondary">
-              <i class="fas fa-message"></i>
-              <span data-en="Let's Talk" data-fr="Parlons">Let's Talk</span>
-            </a>
-          </div>
         </div>
-        <div class="floating-card">
-          <h3 data-en="Technologies" data-fr="Technologies">Technologies</h3>
-          <div class="tech-stack">
-            <div class="tech-item">
-              <i class="fab fa-node-js"></i>
-              <p>Node.js</p>
-            </div>
-            <div class="tech-item">
-              <i class="fas fa-leaf"></i>
-              <p>Spring Boot</p>
-            </div>
-            <!-- <div class="tech-item">
-              <i class="fab fa-html5"></i>
-              <p>HTML5</p>
-            </div> -->
-            <div class="tech-item">
-              <i class="fab fa-php"></i>
-              <p>PHP</p>
-            </div>
-            <div class="tech-item">
-              <i class="fab fa-react"></i>
-              <p>React Native</p>
-            </div>
-            <div class="tech-item">
-              <i class="fab fa-react"></i>
-              <p>React.js</p>
-            </div>
-            <div class="tech-item">
-              <i class="fab fa-js"></i>
-              <p>Next.js</p>
-            </div>
-          </div>
-          <!-- <div class="floating-card">
-            <h3 data-en="Frontend Excellence" data-fr="Excellence Frontend">
-              Frontend Excellence
-            </h3>
-            <div class="tech-stack">
-              <div class="tech-item">
-                <i class="fab fa-react"></i>
-                <p>React</p>
-              </div>
-              <div class="tech-item">
-                <i class="fab fa-js"></i>
-                <p>Next.js</p>
-              </div>
-              <div class="tech-item">
-                <i class="fas fa-mobile-alt"></i>
-                <p>React Native</p>
-              </div>
-            </div>
-          </div> -->
+        <div class="social-links">
+          <a href="https://github.com/kenza-ben-ayed" target="_blank">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              />
+            </svg>
+          </a>
+          <a href="https://linkedin.com/in/kenza-ben-ayed" target="_blank">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+              />
+            </svg>
+          </a>
+          <a href="mailto:btazanka@gmail.com">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              ></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+        </div>
+        <div class="scroll-indicator">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#c084fc"
+            stroke-width="2"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
         </div>
       </div>
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about">
+    <section class="section" id="about">
       <div class="container">
-        <h2 class="section-title" data-en="About Me" data-fr="À Propos de Moi">
-          About Me
-        </h2>
-        <div class="about-grid">
-          <div class="about-text">
-            <h3
-              data-en="Passionate Developer & Problem Solver"
-              data-fr="Développeuse Passionnée & Résolutrice de Problèmes"
-            >
-              Passionate Developer & Problem Solver
+        <h2 class="section-title" data-i18n="about.title">About Me</h2>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3 style="color: #d8b4fe; margin-bottom: 1rem">
+              Full Stack Developer
             </h3>
             <p
-              data-en="I'm a Senior Software Engineering Technician with extensive experience in developing cutting-edge web and mobile applications. My passion lies in creating scalable, efficient solutions that make a real impact."
-              data-fr="Je suis une Technicienne Senior en Ingénierie Logicielle avec une vaste expérience dans le développement d'applications web et mobiles de pointe. Ma passion réside dans la création de solutions évolutives et efficaces qui ont un impact réel."
+              data-i18n="about.description"
+              style="color: #d1d5db; line-height: 1.8; margin-bottom: 1.5rem"
             >
-              I'm a Senior Software Engineering Technician with extensive
-              experience in developing cutting-edge web and mobile applications.
-              My passion lies in creating scalable, efficient solutions that
-              make a real impact.
+              Full stack developer with expertise in React, React Native,
+              Next.js, Node.js and web/mobile application development. Skilled
+              in design, deployment, CI/CD, cloud and technical project
+              management.
             </p>
-            <p
-              data-en="With a strong foundation in both frontend and backend technologies, I excel at building complete digital ecosystems that deliver exceptional user experiences while maintaining robust performance and security."
-              data-fr="Avec une solide base en technologies frontend et backend, j'excelle dans la construction d'écosystèmes numériques complets qui offrent des expériences utilisateur exceptionnelles tout en maintenant des performances robustes et la sécurité."
+            <div style="display: flex; flex-direction: column; gap: 1rem">
+              <div style="display: flex; align-items: center; gap: 0.75rem">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#c084fc"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                  ></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>Tunis, Tunisia</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#c084fc"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path>
+                </svg>
+                <span>+216 22 459 159</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#c084fc"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  ></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>btazanka@gmail.com</span>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <h3
+              style="
+                color: #d8b4fe;
+                margin-bottom: 1.5rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+              "
             >
-              With a strong foundation in both frontend and backend
-              technologies, I excel at building complete digital ecosystems that
-              deliver exceptional user experiences while maintaining robust
-              performance and security.
-            </p>
-            <div style="margin-top: 2rem">
-              <a
-                href="documents/new cv EN.pdf"
-                download
-                class="btn-primary"
-                style="margin-right: 1rem"
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
               >
-                <i class="fas fa-download"></i>
-                <span data-en="Download CV (EN)" data-fr="Télécharger CV (EN)"
-                  >Download CV (EN)</span
-                >
-              </a>
-              <a href="documents/new cv.pdf" download class="btn-secondary">
-                <i class="fas fa-download"></i>
-                <span data-en="Download CV (FR)" data-fr="Télécharger CV (FR)"
-                  >Download CV (FR)</span
-                >
-              </a>
-            </div>
-          </div>
-          <div class="skills-grid">
-            <div class="skill-item">
-              <div class="skill-header">
-                <span
-                  class="skill-name"
-                  data-en="Frontend Development"
-                  data-fr="Développement Frontend"
-                  >Frontend Development</span
-                >
-                <span class="skill-percent">90%</span>
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path
+                  d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                ></path>
+              </svg>
+              Languages
+            </h3>
+            <div class="language-skill" data-percentage="90">
+              <div class="language-header">
+                <span class="language-name">🇬🇧 English</span>
+                <span class="language-level">C1</span>
               </div>
-              <div class="skill-bar">
-                <div class="skill-progress" style="width: 90%"></div>
+              <div class="progress-bar">
+                <div
+                  class="progress-fill"
+                  style="
+                    width: 0%;
+                    background: linear-gradient(to right, #3b82f6, #2563eb);
+                  "
+                ></div>
               </div>
             </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span
-                  class="skill-name"
-                  data-en="Mobile Development"
-                  data-fr="Développement Mobile"
-                  >Mobile Development</span
-                >
-                <span class="skill-percent">95%</span>
+            <div class="language-skill" data-percentage="75">
+              <div class="language-header">
+                <span class="language-name">🇫🇷 Français</span>
+                <span class="language-level">B2</span>
               </div>
-              <div class="skill-bar">
-                <div class="skill-progress" style="width: 95%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span
-                  class="skill-name"
-                  data-en="Backend Development"
-                  data-fr="Développement Backend"
-                  >Backend Development</span
-                >
-                <span class="skill-percent">75%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" style="width: 75%"></div>
+              <div class="progress-bar">
+                <div
+                  class="progress-fill"
+                  style="
+                    width: 0%;
+                    background: linear-gradient(to right, #6366f1, #7c3aed);
+                  "
+                ></div>
               </div>
             </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span class="skill-name">React Native & Expo</span>
-                <span class="skill-percent">90%</span>
+            <div class="language-skill" data-percentage="100">
+              <div class="language-header">
+                <span class="language-name">🇹🇳 العربية</span>
+                <span class="language-level">Native</span>
               </div>
-              <div class="skill-bar">
-                <div class="skill-progress" style="width: 90%"></div>
+              <div class="progress-bar">
+                <div
+                  class="progress-fill"
+                  style="
+                    width: 0%;
+                    background: linear-gradient(to right, #10b981, #059669);
+                  "
+                ></div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Education Section -->
-    <section class="education" id="education">
-      <div class="container">
-        <h2 class="section-title" data-en="Education" data-fr="Formation">
-          Education
-        </h2>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-content">
-              <div class="timeline-date">2021 - 2024</div>
-              <h3
-                class="timeline-title"
-                data-en="Bachelor's Degree in Computer Science"
-                data-fr="Licence en Informatique"
-              >
-                Bachelor's Degree in Computer Science
-              </h3>
-              <p
-                class="timeline-subtitle"
-                data-en="Software Engineering Specialty"
-                data-fr="Spécialité Génie Logiciel"
-              >
-                Software Engineering Specialty
-              </p>
-              <p class="timeline-subtitle">
-                École Supérieure des Sciences et de la Technologie de Hammam
-                Sousse
-              </p>
-              <p
-                class="timeline-description"
-                data-en="Specialized in software engineering with focus on modern development frameworks and methodologies. Gained extensive knowledge in full-stack development, mobile applications, and software architecture."
-                data-fr="Spécialisée en génie logiciel avec un focus sur les frameworks de développement modernes et les méthodologies. Acquisition de connaissances étendues en développement full-stack, applications mobiles et architecture logicielle."
-              >
-                Specialized in software engineering with focus on modern
-                development frameworks and methodologies. Gained extensive
-                knowledge in full-stack development, mobile applications, and
-                software architecture.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-content">
-              <div class="timeline-date">2016 - 2021</div>
-              <h3
-                class="timeline-title"
-                data-en="Baccalaureate in Experimental Sciences"
-                data-fr="Baccalauréat Sciences Expérimentales"
-              >
-                Baccalaureate in Experimental Sciences
-              </h3>
-              <p class="timeline-subtitle">
-                Carthage Hannibal High School, Tunisia
-              </p>
-              <p
-                class="timeline-description"
-                data-en="Completed secondary education with focus on experimental sciences, building strong analytical and problem-solving foundations that later supported my transition into computer science and software engineering."
-                data-fr="Achèvement de l'enseignement secondaire avec un focus sur les sciences expérimentales, construisant de solides fondations analytiques et de résolution de problèmes qui ont ensuite soutenu ma transition vers l'informatique et le génie logiciel."
-              >
-                Completed secondary education with focus on experimental
-                sciences, building strong analytical and problem-solving
-                foundations that later supported my transition into computer
-                science and software engineering.
-              </p>
             </div>
           </div>
         </div>
@@ -1349,391 +1129,532 @@
     </section>
 
     <!-- Experience Section -->
-    <section class="experience" id="experience">
+    <!-- Experience Section -->
+    <section id="experience" class="section">
       <div class="container">
-        <h2
-          class="section-title"
-          data-en="Professional Experience"
-          data-fr="Expérience Professionnelle"
-        >
+        <h2 class="section-title" data-i18n="experience.title">
           Professional Experience
         </h2>
-        <div class="experience-grid">
-          <!-- Institut Poincaré Experience -->
-          <div class="experience-item">
-            <div class="experience-header">
-              <div class="experience-info">
-                <h3
-                  data-en="Full Stack Developer"
-                  data-fr="Développeuse Full Stack"
-                >
-                  Full Stack Developer
-                </h3>
-                <p class="experience-company">Institut Poincaré</p>
-              </div>
-              <div
-                class="experience-date"
-                data-en="August 2024 - Present"
-                data-fr="Août 2024 - Présent"
-              >
-                August 2024 - Present
-              </div>
-            </div>
-            <p
-              class="experience-description"
-              data-en="Leading comprehensive digital transformation initiatives and developing innovative educational platforms."
-              data-fr="Direction d'initiatives complètes de transformation numérique et développement de plateformes éducatives innovantes."
-            >
-              Leading comprehensive digital transformation initiatives and
-              developing innovative educational platforms.
-            </p>
 
-            <ul class="achievements-list">
-              <li
-                data-en="Developed Beedumy mobile and web application for educational services with seamless learning resource access"
-                data-fr="Développement de l'application mobile et web Beedumy pour les services éducatifs avec un accès fluide aux ressources d'apprentissage"
-              >
-                Developed Beedumy mobile and web application for educational
-                services with seamless learning resource access
-              </li>
+        <div class="timeline">
+          <div class="timeline-line"></div>
 
-              <li
-                data-en="Complete redesign and development of Poincaré website from scratch with modern design and optimization"
-                data-fr="Refonte complète et développement du site web Poincaré depuis zéro avec design moderne et optimisation"
-              >
-                Complete redesign and development of Poincaré website from
-                scratch with modern design and optimization
-              </li>
-
-              <li
-                data-en="Transformed Poincaré Web platform into native Android application"
-                data-fr="Transformation de la plateforme Poincaré Web en application Android native"
-              >
-                Transformed Poincaré Web platform into native Android
-                application
-              </li>
-
-              <li
-                data-en="Built Hafadhny mobile app for kids' educational services and poem memorization"
-                data-fr="Construction de l'application mobile Hafadhny pour les services éducatifs des enfants et la mémorisation de poèmes"
-              >
-                Built Hafadhny mobile app for kids' educational services and
-                poem memorization
-              </li>
-
-              <li
-                data-en="Designed and implemented interactive schedule management system with intuitive interface"
-                data-fr="Conception et implémentation d'un système de gestion de planning interactif avec interface intuitive"
-              >
-                Designed and implemented interactive schedule management system
-                with intuitive interface
-              </li>
-
-              <li
-                data-en="Created communication interface for online courses and redesigned digital whiteboard for teacher note-taking"
-                data-fr="Création d'interface de communication pour cours en ligne et refonte du tableau blanc numérique pour la prise de notes des enseignants"
-              >
-                Created communication interface for online courses and
-                redesigned digital whiteboard for teacher note-taking
-              </li>
-
-              <li
-                data-en="Deployed and configured Odoo container locally and automated VPS deployment via GitHub"
-                data-fr="Déploiement et configuration du conteneur Odoo en local et automatisation du déploiement VPS via GitHub"
-              >
-                Deployed and configured Odoo container locally and automated VPS
-                deployment via GitHub
-              </li>
-
-              <li
-                data-en="Led IT department management for one week and supervised intern development projects"
-                data-fr="Direction de la gestion du département IT pendant une semaine et supervision de projets de développement de stagiaires"
-              >
-                Led IT department management for one week and supervised intern
-                development projects
-              </li>
-
-              <li
-                data-en="Spearheaded AutoStudy project including web interface development and educational content integration"
-                data-fr="Direction du projet AutoStudy incluant le développement d'interface web et l'intégration de contenu éducatif"
-              >
-                Spearheaded AutoStudy project including web interface
-                development and educational content integration
-              </li>
-            </ul>
-
-            <div class="tech-tags">
-              <span class="tech-tag">React Native</span>
-              <span class="tech-tag">Expo</span>
-              <span class="tech-tag">Next.js</span>
-              <span class="tech-tag">React.js</span>
-              <span class="tech-tag">Android</span>
-              <span class="tech-tag">Odoo</span>
-              <span class="tech-tag">GitHub</span>
-              <span class="tech-tag">VPS</span>
-            </div>
-          </div>
-
-          <!-- LEONI Experience -->
-          <div class="experience-item">
-            <div class="experience-header">
-              <div class="experience-info">
-                <h3
-                  data-en="Software Engineering Intern"
-                  data-fr="Stagiaire Ingénierie Logicielle"
-                >
-                  Software Engineering Intern
-                </h3>
-                <p class="experience-company">LEONI Wiring Systems Tunisia</p>
-              </div>
-              <div
-                class="experience-date"
-                data-en="January 2024 - June 2024"
-                data-fr="Janvier 2024 - Juin 2024"
-              >
-                January 2024 - June 2024
-              </div>
-            </div>
-            <p
-              class="experience-description"
-              data-en="Completed final project internship focusing on digitizing industrial services and developing comprehensive platform solutions."
-              data-fr="Achèvement du stage de projet final axé sur la numérisation des services industriels et le développement de solutions de plateforme complètes."
-            >
-              Completed final project internship focusing on digitizing
-              industrial services and developing comprehensive platform
-              solutions.
-            </p>
-
-            <ul class="achievements-list">
-              <li
-                data-en="Designed and developed Leo-In platform with comprehensive web dashboard and mobile application"
-                data-fr="Conception et développement de la plateforme Leo-In avec tableau de bord web complet et application mobile"
-              >
-                Designed and developed Leo-In platform with comprehensive web
-                dashboard and mobile application
-              </li>
-
-              <li
-                data-en="Successfully digitized Leoni's industrial services and streamlined operational workflows"
-                data-fr="Numérisation réussie des services industriels de Leoni et rationalisation des flux de travail opérationnels"
-              >
-                Successfully digitized Leoni's industrial services and
-                streamlined operational workflows
-              </li>
-
-              <li
-                data-en="Implemented efficient data management systems and user-friendly interfaces for industrial processes"
-                data-fr="Implémentation de systèmes de gestion de données efficaces et d'interfaces conviviales pour les processus industriels"
-              >
-                Implemented efficient data management systems and user-friendly
-                interfaces for industrial processes
-              </li>
-
-              <li
-                data-en="Collaborated with cross-functional teams to understand business requirements and deliver tailored solutions"
-                data-fr="Collaboration avec des équipes transversales pour comprendre les exigences métier et livrer des solutions sur mesure"
-              >
-                Collaborated with cross-functional teams to understand business
-                requirements and deliver tailored solutions
-              </li>
-            </ul>
-
-            <div class="tech-tags">
-              <span class="tech-tag">React Native</span>
-              <span class="tech-tag">Spring Boot</span>
-              <span class="tech-tag">Next.js</span>
-              <span class="tech-tag">Dashboard</span>
-              <span class="tech-tag">Mobile Development</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services" id="services">
-      <div class="container">
-        <h2 class="section-title" data-en="What I Do" data-fr="Ce Que Je Fais">
-          What I Do
-        </h2>
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fas fa-laptop-code"></i>
-            </div>
-            <h3
-              data-en="Frontend Web Development"
-              data-fr="Développement Web Frontend"
-            >
-              Frontend Web Development
-            </h3>
-            <p
-              data-en="I create responsive and modern websites using cutting-edge technologies like React.js, Next.js, and modern CSS frameworks. My focus is on delivering seamless user experiences with pixel-perfect designs."
-              data-fr="Je crée des sites web responsifs et modernes en utilisant des technologies de pointe comme React.js, Next.js et des frameworks CSS modernes. Mon focus est de livrer des expériences utilisateur fluides avec des designs pixel-perfect."
-            >
-              I create responsive and modern websites using cutting-edge
-              technologies like React.js, Next.js, and modern CSS frameworks. My
-              focus is on delivering seamless user experiences with
-              pixel-perfect designs.
-            </p>
-          </div>
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fas fa-mobile-alt"></i>
-            </div>
-            <h3
-              data-en="Mobile App Development"
-              data-fr="Développement d'Applications Mobiles"
-            >
-              Mobile App Development
-            </h3>
-            <p
-              data-en="I build high-performance, cross-platform mobile applications using React Native and Expo. From concept to deployment, I ensure optimal performance and user-friendly interfaces."
-              data-fr="Je construis des applications mobiles haute performance et cross-platform en utilisant React Native et Expo. Du concept au déploiement, j'assure des performances optimales et des interfaces conviviales."
-            >
-              I build high-performance, cross-platform mobile applications using
-              React Native and Expo. From concept to deployment, I ensure
-              optimal performance and user-friendly interfaces.
-            </p>
-          </div>
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fas fa-server"></i>
-            </div>
-            <h3 data-en="Backend Development" data-fr="Développement Backend">
-              Backend Development
-            </h3>
-            <p
-              data-en="I develop scalable backend systems using Spring Boot and Node.js, focusing on robust APIs, efficient data management, and secure authentication systems that power your applications."
-              data-fr="Je développe des systèmes backend évolutifs en utilisant Spring Boot et Node.js, me concentrant sur des APIs robustes, une gestion efficace des données et des systèmes d'authentification sécurisés qui alimentent vos applications."
-            >
-              I develop scalable backend systems using Spring Boot and Node.js,
-              focusing on robust APIs, efficient data management, and secure
-              authentication systems that power your applications.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section class="portfolio" id="portfolio">
-      <div class="container">
-        <h2
-          class="section-title"
-          data-en="Featured Projects"
-          data-fr="Projets Phares"
-        >
-          Featured Projects
-        </h2>
-        <div class="portfolio-grid">
-          <div class="portfolio-item">
-            <div class="portfolio-image">
-              <i class="fas fa-graduation-cap"></i>
-            </div>
-            <div class="portfolio-content">
-              <h3 class="portfolio-title">Beedumy Mobile App</h3>
-              <p class="portfolio-company">Institut Poincaré</p>
-              <p
-                class="portfolio-description"
-                data-en="Developed a comprehensive mobile application for educational services, providing students with seamless access to learning resources and course management."
-                data-fr="Développement d'une application mobile complète pour les services éducatifs, offrant aux étudiants un accès fluide aux ressources d'apprentissage et à la gestion des cours."
-              >
-                Developed a comprehensive mobile application for educational
-                services, providing students with seamless access to learning
-                resources and course management.
-              </p>
-              <div class="portfolio-tech">
-                <span class="tech-tag">Expo</span>
-                <span class="tech-tag">React Native</span>
-                <span class="tech-tag">Mobile</span>
-              </div>
-              <div class="portfolio-links">
-                <a
-                  href="https://www.beedumy.com/acceuil"
-                  target="_blank"
-                  class="portfolio-link"
-                >
-                  <i class="fas fa-external-link-alt"></i>
-                  <span data-en="Live Demo" data-fr="Démonstration"
-                    >Live Demo</span
+          <!-- Job 2 - Poincaré Institute -->
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="card">
+              <div class="card-header">
+                <div style="flex: 1">
+                  <div class="title-row">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#c084fc"
+                      stroke-width="2"
+                    >
+                      <rect
+                        x="2"
+                        y="7"
+                        width="20"
+                        height="14"
+                        rx="2"
+                        ry="2"
+                      ></rect>
+                      <path
+                        d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"
+                      ></path>
+                    </svg>
+                    <h3 data-i18n="experience.job2.title">
+                      Mobile & Web Developer
+                    </h3>
+                  </div>
+                  <p class="company" data-i18n="experience.job2.company">
+                    Poincaré Institute
+                  </p>
+                </div>
+                <div class="date">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
                   >
-                </a>
+                    <rect
+                      x="3"
+                      y="4"
+                      width="18"
+                      height="18"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  <span data-i18n="experience.job2.date"
+                    >Aug 2024 - Oct 2025</span
+                  >
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="portfolio-item">
-            <div class="portfolio-image">
-              <i class="fas fa-graduation-cap"></i>
-            </div>
-            <div class="portfolio-content">
-              <h3 class="portfolio-title">Hafadhny Mobile App</h3>
-              <p class="portfolio-company">Institut Poincaré</p>
-              <p
-                class="portfolio-description"
-                data-en="Developed a comprehensive mobile application for educational services, providing kids with seamless access to learning resources and course management and help them memorize their poems and so more."
-                data-fr="Développement d'une application mobile complète pour les services éducatifs, offrant aux enfants un accès fluide aux ressources d'apprentissage et à la gestion des cours, les aidant à mémoriser leurs poèmes et bien plus."
-              >
-                Developed a comprehensive mobile application for educational
-                services, providing kids with seamless access to learning
-                resources and course management and help them memorize their
-                poems and so more.
+              <div class="progress"><span></span></div>
+              <p class="description" data-i18n="experience.job2.desc">
+                Design and development of a complete ecosystem: ERP (Next.js,
+                Prisma), mobile/web applications, cloud architecture, Docker
+                containerization, CI/CD and technical project management.
               </p>
-              <div class="portfolio-tech">
-                <span class="tech-tag">Expo</span>
-                <span class="tech-tag">React Native</span>
-                <span class="tech-tag">Mobile</span>
-              </div>
             </div>
           </div>
 
-          <div class="portfolio-item">
-            <div class="portfolio-image">
-              <i class="fas fa-industry"></i>
-            </div>
-            <div class="portfolio-content">
-              <h3 class="portfolio-title">Leo-In Platform</h3>
-              <p class="portfolio-company">LEONI Tunisia</p>
-              <p
-                class="portfolio-description"
-                data-en="Designed and developed a comprehensive web dashboard and mobile application to digitize Leoni's industrial services and streamline operations."
-                data-fr="Conception et développement d'un tableau de bord web complet et d'une application mobile pour numériser les services industriels de Leoni et rationaliser les opérations."
-              >
-                Designed and developed a comprehensive web dashboard and mobile
-                application to digitize Leoni's industrial services and
-                streamline operations.
-              </p>
-              <div class="portfolio-tech">
-                <span class="tech-tag">React Native</span>
-                <span class="tech-tag">Spring Boot</span>
-                <span class="tech-tag">Next.js</span>
-                <span class="tech-tag">Dashboard</span>
+          <!-- Job 1 - Freelance -->
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="card">
+              <div class="card-header">
+                <div style="flex: 1">
+                  <div class="title-row">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#c084fc"
+                      stroke-width="2"
+                    >
+                      <rect
+                        x="2"
+                        y="7"
+                        width="20"
+                        height="14"
+                        rx="2"
+                        ry="2"
+                      ></rect>
+                      <path
+                        d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"
+                      ></path>
+                    </svg>
+                    <h3 data-i18n="experience.job1.title">
+                      Full Stack Developer Freelance
+                    </h3>
+                  </div>
+                </div>
+                <div class="date">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <rect
+                      x="3"
+                      y="4"
+                      width="18"
+                      height="18"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  <span data-i18n="experience.job1.date">2022 - Present</span>
+                </div>
               </div>
+              <div class="progress"><span></span></div>
+              <p class="description" data-i18n="experience.job1.desc">
+                Contribution to various web/mobile projects: feature
+                development, bug fixes and complete module implementation.
+              </p>
             </div>
           </div>
 
-          <div class="portfolio-item">
-            <div class="portfolio-image">
-              <i class="fas fa-calendar-alt"></i>
-            </div>
-            <div class="portfolio-content">
-              <h3
-                class="portfolio-title"
-                data-en="Interactive Schedule Manager"
-                data-fr="Gestionnaire de Planning Interactif"
-              >
-                Interactive Schedule Manager
-              </h3>
-              <p class="portfolio-company">Institut Poincaré</p>
-              <p
-                class="portfolio-description"
-                data-en="Built a dynamic schedule management system with intuitive interface for managing academic timetables and resource allocation."
-                data-fr="Construction d'un système de gestion de planning dynamique avec une interface intuitive pour la gestion des emplois du temps académiques et l'allocation des ressources."
-              >
-                Built a dynamic schedule management system with intuitive
-                interface for managing academic timetables and resource
-                allocation.
+          <!-- Job 3 - LEONI Final Year -->
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="card">
+              <div class="card-header">
+                <div style="flex: 1">
+                  <div class="title-row">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#c084fc"
+                      stroke-width="2"
+                    >
+                      <rect
+                        x="2"
+                        y="7"
+                        width="20"
+                        height="14"
+                        rx="2"
+                        ry="2"
+                      ></rect>
+                      <path
+                        d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"
+                      ></path>
+                    </svg>
+                    <h3 data-i18n="experience.job3.title">
+                      Final Year Project Internship
+                    </h3>
+                  </div>
+                  <p class="company" data-i18n="experience.job3.company">
+                    LEONI Wiring Systems Tunisia
+                  </p>
+                </div>
+                <div class="date">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <rect
+                      x="3"
+                      y="4"
+                      width="18"
+                      height="18"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  <span data-i18n="experience.job3.date"
+                    >Jan 2024 - June 2024</span
+                  >
+                </div>
+              </div>
+              <div class="progress"><span></span></div>
+              <p class="description" data-i18n="experience.job3.desc">
+                Design and development of web and mobile application for
+                digitalization of Leoni services.
               </p>
+            </div>
+          </div>
+
+          <!-- Job 4 - LEONI Summer -->
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="card">
+              <div class="card-header">
+                <div style="flex: 1">
+                  <div class="title-row">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#c084fc"
+                      stroke-width="2"
+                    >
+                      <rect
+                        x="2"
+                        y="7"
+                        width="20"
+                        height="14"
+                        rx="2"
+                        ry="2"
+                      ></rect>
+                      <path
+                        d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"
+                      ></path>
+                    </svg>
+                    <h3 data-i18n="experience.job4.title">Summer Internship</h3>
+                  </div>
+                  <p class="company" data-i18n="experience.job4.company">
+                    LEONI Wiring Systems Tunisia
+                  </p>
+                </div>
+                <div class="date">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <rect
+                      x="3"
+                      y="4"
+                      width="18"
+                      height="18"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  <span data-i18n="experience.job4.date"
+                    >June 2023 - Aug 2023</span
+                  >
+                </div>
+              </div>
+              <div class="progress"><span></span></div>
+              <p class="description" data-i18n="experience.job4.desc">
+                Web application development. Technologies: Next.js, Spring Boot,
+                MySQL.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="grid grid-3" id="projectsContainer">
+          <!-- Projects will be injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+      <div class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="skill-category">
+              <h4>Programming Languages</h4>
+              <div class="skill-item" data-skill="95">
+                <div class="skill-header">
+                  <span>JavaScript</span>
+                  <span style="color: #c084fc">95%</span>
+                </div>
+                <div class="progress-bar">
+                  <div
+                    class="progress-fill"
+                    style="
+                      width: 0%;
+                      background: linear-gradient(to right, #7c3aed, #ec4899);
+                    "
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item" data-skill="90">
+                <div class="skill-header">
+                  <span>TypeScript</span>
+                  <span style="color: #c084fc">90%</span>
+                </div>
+                <div class="progress-bar">
+                  <div
+                    class="progress-fill"
+                    style="
+                      width: 0%;
+                      background: linear-gradient(to right, #7c3aed, #ec4899);
+                    "
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item" data-skill="85">
+                <div class="skill-header">
+                  <span>Java</span>
+                  <span style="color: #c084fc">85%</span>
+                </div>
+                <div class="progress-bar">
+                  <div
+                    class="progress-fill"
+                    style="
+                      width: 0%;
+                      background: linear-gradient(to right, #7c3aed, #ec4899);
+                    "
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item" data-skill="75">
+                <div class="skill-header">
+                  <span>Python</span>
+                  <span style="color: #c084fc">75%</span>
+                </div>
+                <div class="progress-bar">
+                  <div
+                    class="progress-fill"
+                    style="
+                      width: 0%;
+                      background: linear-gradient(to right, #7c3aed, #ec4899);
+                    "
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="skill-category">
+              <h4>Frameworks & Libraries</h4>
+              <div class="skill-item" data-skill="95">
+                <div class="skill-header">
+                  <span>Next.js / React</span>
+                  <span style="color: #c084fc">95%</span>
+                </div>
+                <div class="progress-bar">
+                  <div
+                    class="progress-fill"
+                    style="
+                      width: 0%;
+                      background: linear-gradient(to right, #7c3aed, #ec4899);
+                    "
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item" data-skill="90">
+                <div class="skill-header">
+                  <span>React Native</span>
+                  <span style="color: #c084fc">90%</span>
+                </div>
+                <div class="progress-bar">
+                  <div
+                    class="progress-fill"
+                    style="
+                      width: 0%;
+                      background: linear-gradient(to right, #7c3aed, #ec4899);
+                    "
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item" data-skill="85">
+                <div class="skill-header">
+                  <span>Node.js / NestJS</span>
+                  <span style="color: #c084fc">85%</span>
+                </div>
+                <div class="progress-bar">
+                  <div
+                    class="progress-fill"
+                    style="
+                      width: 0%;
+                      background: linear-gradient(to right, #7c3aed, #ec4899);
+                    "
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item" data-skill="80">
+                <div class="skill-header">
+                  <span>Spring Boot</span>
+                  <span style="color: #c084fc">80%</span>
+                </div>
+                <div class="progress-bar">
+                  <div
+                    class="progress-fill"
+                    style="
+                      width: 0%;
+                      background: linear-gradient(to right, #7c3aed, #ec4899);
+                    "
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="skill-category">
+              <h4>Databases & Tools</h4>
+              <div class="skill-item" data-skill="85">
+                <div class="skill-header">
+                  <span>PostgreSQL / MySQL</span>
+                  <span style="color: #c084fc">85%</span>
+                </div>
+                <div class="progress-bar">
+                  <div
+                    class="progress-fill"
+                    style="
+                      width: 0%;
+                      background: linear-gradient(to right, #7c3aed, #ec4899);
+                    "
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item" data-skill="80">
+                <div class="skill-header">
+                  <span>MongoDB</span>
+                  <span style="color: #c084fc">80%</span>
+                </div>
+                <div class="progress-bar">
+                  <div
+                    class="progress-fill"
+                    style="
+                      width: 0%;
+                      background: linear-gradient(to right, #7c3aed, #ec4899);
+                    "
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item" data-skill="90">
+                <div class="skill-header">
+                  <span>Git</span>
+                  <span style="color: #c084fc">90%</span>
+                </div>
+                <div class="progress-bar">
+                  <div
+                    class="progress-fill"
+                    style="
+                      width: 0%;
+                      background: linear-gradient(to right, #7c3aed, #ec4899);
+                    "
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="skill-category">
+              <h4>DevOps & Cloud</h4>
+              <div class="skill-item" data-skill="85">
+                <div class="skill-header">
+                  <span>Docker</span>
+                  <span style="color: #c084fc">85%</span>
+                </div>
+                <div class="progress-bar">
+                  <div
+                    class="progress-fill"
+                    style="
+                      width: 0%;
+                      background: linear-gradient(to right, #7c3aed, #ec4899);
+                    "
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item" data-skill="80">
+                <div class="skill-header">
+                  <span>CI/CD</span>
+                  <span style="color: #c084fc">80%</span>
+                </div>
+                <div class="progress-bar">
+                  <div
+                    class="progress-fill"
+                    style="
+                      width: 0%;
+                      background: linear-gradient(to right, #7c3aed, #ec4899);
+                    "
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item" data-skill="85">
+                <div class="skill-header">
+                  <span>Prisma</span>
+                  <span style="color: #c084fc">85%</span>
+                </div>
+                <div class="progress-bar">
+                  <div
+                    class="progress-fill"
+                    style="
+                      width: 0%;
+                      background: linear-gradient(to right, #7c3aed, #ec4899);
+                    "
+                  ></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1741,479 +1662,986 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
-      <div class="container">
-        <h2
-          class="section-title"
-          data-en="Get In Touch"
-          data-fr="Contactez-Moi"
-        >
-          Get In Touch
-        </h2>
-        <div class="contact-grid">
-          <div class="contact-info">
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="fas fa-envelope"></i>
-              </div>
-              <div class="contact-details">
-                <h4 data-en="Email" data-fr="Email">Email</h4>
-                <p>btazanka@gmail.com</p>
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="fas fa-phone"></i>
-              </div>
-              <div class="contact-details">
-                <h4 data-en="Phone" data-fr="Téléphone">Phone</h4>
-                <p>+216 22 459 159</p>
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="fas fa-map-marker-alt"></i>
-              </div>
-              <div class="contact-details">
-                <h4 data-en="Location" data-fr="Localisation">Location</h4>
-                <p data-en="Tunisia" data-fr="Tunisie">Tunisia</p>
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="fab fa-linkedin"></i>
-              </div>
-              <a
-                href="https://www.linkedin.com/in/kenza-ben-ayed-92592a257"
-                class="contact-details"
-                target="_blank"
+    <section class="section" id="contact">
+      <div class="container" style="max-width: 48rem">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="card" style="text-align: center">
+          <p
+            style="
+              color: #d1d5db;
+              font-size: 1.125rem;
+              margin-bottom: 2rem;
+              line-height: 1.8;
+            "
+          >
+            I'm currently looking for new opportunities. Whether you have a
+            question or just want to say hi, I'll try my best to get back to
+            you!
+          </p>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 1.5rem;
+            "
+          >
+            <a
+              href="mailto:btazanka@gmail.com"
+              style="
+                color: #c084fc;
+                text-decoration: none;
+                font-size: 1.125rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+              "
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
               >
-                <h4>LinkedIn</h4>
-                <p>linkedin.com/in/kenza-ben-ayed</p>
-              </a>
-            </div>
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                ></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              btazanka@gmail.com
+            </a>
+            <a
+              href="tel:+21622459159"
+              style="
+                color: #c084fc;
+                text-decoration: none;
+                font-size: 1.125rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+              "
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                ></path>
+              </svg>
+              +216 22 459 159
+            </a>
+            <a href="mailto:btazanka@gmail.com" class="btn btn-primary"
+              >Send Message</a
+            >
           </div>
-
-          <form class="contact-form" id="contactForm">
-            <div class="form-group">
-              <label for="name" data-en="Full Name" data-fr="Nom Complet"
-                >Full Name</label
-              >
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                data-placeholder-en="Your full name"
-                data-placeholder-fr="Votre nom complet"
-                placeholder="Your full name"
-              />
-            </div>
-            <div class="form-group">
-              <label for="email" data-en="Email Address" data-fr="Adresse Email"
-                >Email Address</label
-              >
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                data-placeholder-en="your.email@example.com"
-                data-placeholder-fr="votre.email@exemple.com"
-                placeholder="your.email@example.com"
-              />
-            </div>
-            <div class="form-group">
-              <label for="subject" data-en="Subject" data-fr="Sujet"
-                >Subject</label
-              >
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                required
-                data-placeholder-en="Project inquiry, collaboration, etc."
-                data-placeholder-fr="Demande de projet, collaboration, etc."
-                placeholder="Project inquiry, collaboration, etc."
-              />
-            </div>
-            <div class="form-group">
-              <label for="message" data-en="Message" data-fr="Message"
-                >Message</label
-              >
-              <textarea
-                id="message"
-                name="message"
-                required
-                data-placeholder-en="Tell me about your project or how we can work together..."
-                data-placeholder-fr="Parlez-moi de votre projet ou comment nous pouvons travailler ensemble..."
-                placeholder="Tell me about your project or how we can work together..."
-              ></textarea>
-            </div>
-            <button type="submit" class="btn-primary">
-              <i class="fas fa-paper-plane"></i>
-              <span data-en="Send Message" data-fr="Envoyer le Message"
-                >Send Message</span
-              >
-            </button>
-          </form>
         </div>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="social-links">
-          <a
-            href="https://www.linkedin.com/in/kenza-ben-ayed-92592a257"
-            class="social-link"
-          >
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://github.com/Kenza-ben-ayed" class="social-link">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="#" class="social-link">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="#" class="social-link">
-            <i class="fas fa-envelope"></i>
-          </a>
-        </div>
-        <p
-          data-en="© 2024 Kenza Ben Ayed. All rights reserved."
-          data-fr="© 2024 Kenza Ben Ayed. Tous droits réservés."
-        >
-          &copy; 2024 Kenza Ben Ayed. All rights reserved.
-        </p>
-      </div>
+    <footer
+      style="
+        background: rgba(15, 23, 42, 0.95);
+        padding: 2rem;
+        text-align: center;
+        border-top: 1px solid rgba(168, 85, 247, 0.2);
+      "
+    >
+      <p style="color: #9ca3af; margin-bottom: 0.5rem">
+        © 2024 Kenza Ben Ayed. All rights reserved.
+      </p>
+      <p style="color: #6b7280; font-size: 0.875rem">
+        Built with HTML, CSS & JavaScript
+      </p>
     </footer>
 
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+      <button class="lightbox-nav prev" id="lightboxPrev" style="display: none">
+        ‹
+      </button>
+      <button class="lightbox-nav next" id="lightboxNext" style="display: none">
+        ›
+      </button>
+      <div class="lightbox-content">
+        <img
+          class="lightbox-image"
+          id="lightboxImage"
+          src=""
+          alt="Full screen"
+        />
+      </div>
+    </div>
+
     <script>
-      // Language toggle functionality
-      let currentLanguage = "en";
-
-      function toggleLanguage() {
-        currentLanguage = currentLanguage === "en" ? "fr" : "en";
-        updateLanguage();
-      }
-
-      function updateLanguage() {
-        const elements = document.querySelectorAll("[data-en][data-fr]");
-        const langText = document.getElementById("langText");
-
-        elements.forEach((element) => {
-          if (currentLanguage === "en") {
-            element.textContent = element.getAttribute("data-en");
-          } else {
-            element.textContent = element.getAttribute("data-fr");
-          }
-        });
-
-        // Update placeholders
-        const inputElements = document.querySelectorAll(
-          "input[data-placeholder-en], textarea[data-placeholder-en]"
-        );
-        inputElements.forEach((element) => {
-          if (currentLanguage === "en") {
-            element.placeholder = element.getAttribute("data-placeholder-en");
-          } else {
-            element.placeholder = element.getAttribute("data-placeholder-fr");
-          }
-        });
-
-        // Update language button text
-        langText.textContent = currentLanguage === "en" ? "FR" : "EN";
-      }
-
-      // Mobile menu toggle
-      function toggleMobileMenu() {
-        const navLinks = document.getElementById("navLinks");
-        navLinks.classList.toggle("active");
-      }
-
-      // Navbar scroll effect
-      window.addEventListener("scroll", () => {
-        const navbar = document.getElementById("navbar");
-        if (window.scrollY > 50) {
-          navbar.classList.add("scrolled");
-        } else {
-          navbar.classList.remove("scrolled");
-        }
-      });
-
-      // Smooth scrolling for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute("href");
-          const targetSection = document.querySelector(targetId);
-
-          if (targetSection) {
-            targetSection.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          }
-
-          // Close mobile menu if open
-          const navLinks = document.getElementById("navLinks");
-          navLinks.classList.remove("active");
-        });
-      });
-
-      // Contact form handling
-      document
-        .getElementById("contactForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          // Get form data
-          const formData = new FormData(this);
-          const name = formData.get("name");
-          const email = formData.get("email");
-          const subject = formData.get("subject");
-          const message = formData.get("message");
-
-          // Simple validation
-          if (!name || !email || !subject || !message) {
-            alert(
-              currentLanguage === "en"
-                ? "Please fill in all fields."
-                : "Veuillez remplir tous les champs."
-            );
-            return;
-          }
-
-          // Email validation
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailRegex.test(email)) {
-            alert(
-              currentLanguage === "en"
-                ? "Please enter a valid email address."
-                : "Veuillez entrer une adresse email valide."
-            );
-            return;
-          }
-
-          // Show success message
-          alert(
-            currentLanguage === "en"
-              ? "Thank you for your message! I will get back to you soon."
-              : "Merci pour votre message ! Je vous répondrai bientôt."
-          );
-
-          // Reset form
-          this.reset();
-        });
-
-      // Intersection Observer for animations
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
+      /* ======================
+     TRANSLATIONS
+  ====================== */
+      const translations = {
+        en: {
+          nav: {
+            home: "Home",
+            about: "About",
+            experience: "Experience",
+            projects: "Projects",
+            skills: "Skills",
+            contact: "Contact",
+          },
+          hero: {
+            greeting: "Hi, I'm",
+            title: "Full Stack Developer",
+            subtitle: "Mobile & Web",
+            description:
+              "Passionate about creating elegant solutions with React, React Native, Next.js, and Node.js. Specialized in building scalable web and mobile applications.",
+            cta: "View My Work",
+            downloadCV: "Download CV",
+          },
+          about: {
+            title: "About Me",
+            description:
+              "Full stack developer with expertise in React, React Native, Next.js, Node.js and web/mobile application development. Skilled in design, deployment, CI/CD, cloud and technical project management.",
+            education: "Education",
+            degree1: "Bachelor in Computer Science",
+            degree1Sub: "Software Engineering & Information Systems",
+            degree1Date: "Sep 2021 - June 2024",
+            degree1School:
+              "Higher School of Sciences and Technologies of Hammam Sousse",
+            degree2: "Baccalaureate in Experimental Sciences",
+            degree2Date: "Sep 2016 - May 2021",
+            degree2School: "Carthage Hannibal High School",
+          },
+          experience: {
+            title: "Professional Experience",
+            current: "Current",
+            job1: {
+              title: "Full Stack Developer Freelance",
+              date: "2022 - Present",
+              desc: "Contribution to various web/mobile projects: feature development, bug fixes and complete module implementation. Stack: Nuxt.js, NestJS, Node.js, Laravel, React Native.",
+            },
+            job2: {
+              title: "Mobile & Web Developer",
+              company: "Poincaré Institute",
+              date: "Aug 2024 - Oct 2025",
+              desc: "Design and development of a complete ecosystem: ERP (Next.js, Prisma), mobile/web applications, cloud architecture, Docker containerization, CI/CD and technical project management. Led development of educational and operational solutions for students and administration.",
+            },
+            job3: {
+              title: "Final Year Project Internship",
+              company: "LEONI Wiring Systems Tunisia",
+              date: "Jan 2024 - June 2024",
+              desc: "Design and development of web and mobile application for digitalization of Leoni services. Technologies: React Native, Next.js, Spring Boot, MySQL.",
+            },
+            job4: {
+              title: "Summer Internship",
+              company: "LEONI Wiring Systems Tunisia",
+              date: "June 2023 - Aug 2023",
+              desc: "Web application development. Technologies: Next.js, Spring Boot, MySQL.",
+            },
+          },
+          projects: {
+            title: "Featured Projects",
+            viewProject: "View Project",
+            noLink: "Screenshots Available",
+            addYourProjects:
+              "Add your projects here with images, descriptions, and technologies",
+          },
+          skills: {
+            title: "Technical Skills",
+            languages: "Programming Languages",
+            frameworks: "Frameworks & Libraries",
+            databases: "Databases",
+            tools: "Tools & Methodologies",
+          },
+          contact: {
+            title: "Get In Touch",
+            description:
+              "I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!",
+            sendMessage: "Send Message",
+          },
+          footer: {
+            rights: "All rights reserved",
+            built: "Built with Next.js & React",
+          },
+        },
+        fr: {
+          nav: {
+            home: "Accueil",
+            about: "À propos",
+            experience: "Expérience",
+            projects: "Projets",
+            skills: "Compétences",
+            contact: "Contact",
+          },
+          hero: {
+            greeting: "Bonjour, je suis",
+            title: "Développeuse Full Stack",
+            subtitle: "Mobile & Web",
+            description:
+              "Passionnée par la création de solutions élégantes avec React, React Native, Next.js et Node.js. Spécialisée dans la construction d'applications web et mobiles évolutives.",
+            cta: "Voir Mon Travail",
+            downloadCV: "Télécharger CV",
+          },
+          about: {
+            title: "À Propos",
+            description:
+              "Développeuse full stack avec expérience en React, React Native, Next.js, Node.js et développement d'applications web/mobile. Compétente en conception, déploiement, CI/CD, cloud et gestion de projets techniques.",
+            education: "Formation",
+            degree1: "Licence en Informatique",
+            degree1Sub: "Génie logiciel et Systèmes d'Information",
+            degree1Date: "Sep 2021 - Juin 2024",
+            degree1School:
+              "École Supérieure des Sciences et Technologies de Hammam Sousse",
+            degree2: "Baccalauréat en Sciences Expérimentales",
+            degree2Date: "Sep 2016 - Mai 2021",
+            degree2School: "Lycée Carthage Hannibal",
+          },
+          experience: {
+            title: "Expérience Professionnelle",
+            current: "Actuellement",
+            job1: {
+              title: "Développeuse Full Stack Freelance",
+              date: "2022 - Présent",
+              desc: "Contribution à divers projets web/mobiles : développement de fonctionnalités, correction de bugs et réalisation de modules complets. Stack : Nuxt.js, NestJS, Node.js, Laravel, React Native.",
+            },
+            job2: {
+              title: "Développeuse Mobile et Web",
+              company: "Institut Poincaré",
+              date: "Août 2024 - Oct 2025",
+              desc: "Conception et développement d'un écosystème complet : ERP (Next.js, Prisma), applications mobiles/web, architecture cloud, conteneurisation Docker, CI/CD et gestion de projets techniques. Pilotage du développement de solutions éducatives et opérationnelles pour les étudiants et l'administration.",
+            },
+            job3: {
+              title: "Stage de Projet de Fin d'Études",
+              company: "LEONI Wiring Systems Tunisia",
+              date: "Jan 2024 - Juin 2024",
+              desc: "Conception et développement d'une application web et mobile pour la digitalisation des services de Leoni. Technologies : React Native, Next.js, Spring Boot, MySQL.",
+            },
+            job4: {
+              title: "Stage d'été",
+              company: "LEONI Wiring Systems Tunisia",
+              date: "Juin 2023 - Août 2023",
+              desc: "Développement d'une application web. Technologies : Next.js, Spring Boot, MySQL.",
+            },
+          },
+          projects: {
+            title: "Projets en Vedette",
+            viewProject: "Voir le Projet",
+            noLink: "Captures d'écran disponibles",
+            addYourProjects:
+              "Ajoutez vos projets ici avec des images, descriptions et technologies",
+          },
+          skills: {
+            title: "Compétences Techniques",
+            languages: "Langages de Programmation",
+            frameworks: "Frameworks & Bibliothèques",
+            databases: "Bases de Données",
+            tools: "Outils & Méthodologies",
+          },
+          contact: {
+            title: "Contactez-Moi",
+            description:
+              "Je suis actuellement à la recherche de nouvelles opportunités. Que vous ayez une question ou que vous vouliez simplement dire bonjour, je ferai de mon mieux pour vous répondre !",
+            sendMessage: "Envoyer un Message",
+          },
+          footer: {
+            rights: "Tous droits réservés",
+            built: "Construit avec Next.js & React",
+          },
+        },
+        ar: {
+          nav: {
+            home: "الرئيسية",
+            about: "عني",
+            experience: "الخبرة",
+            projects: "المشاريع",
+            skills: "المهارات",
+            contact: "اتصل",
+          },
+          hero: {
+            greeting: "مرحبا، أنا",
+            title: "مطورة Full Stack",
+            subtitle: "موبايل و ويب",
+            description:
+              "شغوفة بإنشاء حلول أنيقة باستخدام React و React Native و Next.js و Node.js. متخصصة في بناء تطبيقات ويب وموبايل قابلة للتطوير.",
+            cta: "شاهد أعمالي",
+            downloadCV: "تحميل السيرة الذاتية",
+          },
+          about: {
+            title: "نبذة عني",
+            description:
+              "مطورة full stack ذات خبرة في React و React Native و Next.js و Node.js وتطوير تطبيقات الويب والموبايل. كفاءة في التصميم والنشر و CI/CD والسحابة وإدارة المشاريع التقنية.",
+            education: "التعليم",
+            degree1: "إجازة في علوم الكمبيوتر",
+            degree1Sub: "هندسة البرمجيات ونظم المعلومات",
+            degree1Date: "سبتمبر 2021 - يونيو 2024",
+            degree1School: "المدرسة العليا للعلوم والتقنيات بحمام سوسة",
+            degree2: "بكالوريا في العلوم التجريبية",
+            degree2Date: "سبتمبر 2016 - مايو 2021",
+            degree2School: "ثانوية قرطاج حنبعل",
+          },
+          experience: {
+            title: "الخبرة المهنية",
+            current: "حاليا",
+            job1: {
+              title: "مطورة Full Stack مستقلة",
+              date: "2022 - حاليا",
+              desc: "المساهمة في مشاريع ويب/موبايل متنوعة: تطوير الميزات، إصلاح الأخطاء وتنفيذ وحدات كاملة. Stack: Nuxt.js، NestJS، Node.js، Laravel، React Native.",
+            },
+            job2: {
+              title: "مطورة موبايل و ويب",
+              company: "معهد بوانكاريه",
+              date: "أغسطس 2024 - أكتوبر 2025",
+              desc: "تصميم وتطوير نظام بيئي كامل: ERP (Next.js، Prisma)، تطبيقات الموبايل/الويب، معمارية السحابة، حاويات Docker، CI/CD وإدارة المشاريع التقنية. قيادة تطوير حلول تعليمية وتشغيلية للطلاب والإدارة.",
+            },
+            job3: {
+              title: "تدريب مشروع التخرج",
+              company: "LEONI Wiring Systems Tunisia",
+              date: "يناير 2024 - يونيو 2024",
+              desc: "تصميم وتطوير تطبيق ويب وموبايل لرقمنة خدمات Leoni. التقنيات: React Native، Next.js، Spring Boot، MySQL.",
+            },
+            job4: {
+              title: "تدريب صيفي",
+              company: "LEONI Wiring Systems Tunisia",
+              date: "يونيو 2023 - أغسطس 2023",
+              desc: "تطوير تطبيق ويب. التقنيات: Next.js، Spring Boot، MySQL.",
+            },
+          },
+          projects: {
+            title: "المشاريع المميزة",
+            viewProject: "عرض المشروع",
+            noLink: "لقطات الشاشة متاحة",
+            addYourProjects: "أضف مشاريعك هنا مع الصور والأوصاف والتقنيات",
+          },
+          skills: {
+            title: "المهارات التقنية",
+            languages: "لغات البرمجة",
+            frameworks: "الأطر والمكتبات",
+            databases: "قواعد البيانات",
+            tools: "الأدوات والمنهجيات",
+          },
+          contact: {
+            title: "تواصل معي",
+            description:
+              "أبحث حاليًا عن فرص جديدة. سواء كان لديك سؤال أو تريد فقط أن تقول مرحبًا، سأبذل قصارى جهدي للرد عليك!",
+            sendMessage: "إرسال رسالة",
+          },
+          footer: {
+            rights: "جميع الحقوق محفوظة",
+            built: "بُني باستخدام Next.js و React",
+          },
+        },
       };
+      function setLanguage(lang) {
+        const t = translations[lang];
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-          }
-        });
-      }, observerOptions);
+        // HTML lang + RTL
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
 
-      // Observe elements for animation
-      document.addEventListener("DOMContentLoaded", () => {
-        const animatedElements = document.querySelectorAll(
-          ".timeline-item, .experience-item, .service-card, .portfolio-item"
-        );
-        animatedElements.forEach((el) => {
-          el.style.opacity = "0";
-          el.style.transform = "translateY(30px)";
-          el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-          observer.observe(el);
-        });
-      });
+        /* ======================
+       NAV
+    ====================== */
+        document.querySelector('[data-i18n="nav.home"]').textContent =
+          t.nav.home;
+        document.querySelector('[data-i18n="nav.about"]').textContent =
+          t.nav.about;
+        document.querySelector('[data-i18n="nav.experience"]').textContent =
+          t.nav.experience;
+        document.querySelector('[data-i18n="nav.projects"]').textContent =
+          t.nav.projects;
+        document.querySelector('[data-i18n="nav.skills"]').textContent =
+          t.nav.skills;
+        document.querySelector('[data-i18n="nav.contact"]').textContent =
+          t.nav.contact;
 
-      // Skill bars animation
-      function animateSkillBars() {
-        const skillBars = document.querySelectorAll(".skill-progress");
-        skillBars.forEach((bar) => {
-          const width = bar.style.width;
-          bar.style.width = "0%";
-          setTimeout(() => {
-            bar.style.width = width;
-          }, 500);
-        });
+        /* ======================
+       HERO
+    ====================== */
+        document.querySelector('[data-i18n="hero.greeting"]').textContent =
+          t.hero.greeting;
+        document.querySelector('[data-i18n="hero.title"]').textContent =
+          t.hero.title;
+        document.querySelector('[data-i18n="hero.subtitle"]').textContent =
+          t.hero.subtitle;
+        document.querySelector('[data-i18n="hero.description"]').textContent =
+          t.hero.description;
+        document.querySelector('[data-i18n="hero.cta"]').textContent =
+          t.hero.cta;
+        document.querySelector('[data-i18n="hero.downloadCV"]').textContent =
+          t.hero.downloadCV;
+
+        /* ======================
+       ABOUT
+    ====================== */
+        document.querySelector('[data-i18n="about.title"]').textContent =
+          t.about.title;
+        document.querySelector('[data-i18n="about.description"]').textContent =
+          t.about.description;
+        document.querySelector('[data-i18n="about.education"]').textContent =
+          t.about.education;
+
+        /* ======================
+   EXPERIENCE
+====================== */
+        document.querySelector('[data-i18n="experience.title"]').textContent =
+          t.experience.title;
+
+        // JOB 2 (Current – Poincaré)
+        document.querySelector(
+          '[data-i18n="experience.job2.title"]'
+        ).textContent = t.experience.job2.title;
+        document.querySelector(
+          '[data-i18n="experience.job2.company"]'
+        ).textContent = t.experience.job2.company;
+        document.querySelector(
+          '[data-i18n="experience.job2.date"]'
+        ).textContent = t.experience.job2.date;
+        document.querySelector(
+          '[data-i18n="experience.job2.desc"]'
+        ).textContent = t.experience.job2.desc;
+
+        // JOB 1 (Freelance)
+        document.querySelector(
+          '[data-i18n="experience.job1.title"]'
+        ).textContent = t.experience.job1.title;
+        document.querySelector(
+          '[data-i18n="experience.job1.date"]'
+        ).textContent = t.experience.job1.date;
+        document.querySelector(
+          '[data-i18n="experience.job1.desc"]'
+        ).textContent = t.experience.job1.desc;
+
+        // JOB 3 (LEONI – PFE)
+        document.querySelector(
+          '[data-i18n="experience.job3.title"]'
+        ).textContent = t.experience.job3.title;
+        document.querySelector(
+          '[data-i18n="experience.job3.company"]'
+        ).textContent = t.experience.job3.company;
+        document.querySelector(
+          '[data-i18n="experience.job3.date"]'
+        ).textContent = t.experience.job3.date;
+        document.querySelector(
+          '[data-i18n="experience.job3.desc"]'
+        ).textContent = t.experience.job3.desc;
+
+        // JOB 4 (LEONI – Summer)
+        document.querySelector(
+          '[data-i18n="experience.job4.title"]'
+        ).textContent = t.experience.job4.title;
+        document.querySelector(
+          '[data-i18n="experience.job4.company"]'
+        ).textContent = t.experience.job4.company;
+        document.querySelector(
+          '[data-i18n="experience.job4.date"]'
+        ).textContent = t.experience.job4.date;
+        document.querySelector(
+          '[data-i18n="experience.job4.desc"]'
+        ).textContent = t.experience.job4.desc;
+
+        /* ======================
+       PROJECTS
+    ====================== */
+        document.querySelector('[data-i18n="projects.title"]').textContent =
+          t.projects.title;
+
+        /* ======================
+       SKILLS
+    ====================== */
+        document.querySelector('[data-i18n="skills.title"]').textContent =
+          t.skills.title;
+        document.querySelector('[data-i18n="skills.languages"]').textContent =
+          t.skills.languages;
+        document.querySelector('[data-i18n="skills.frameworks"]').textContent =
+          t.skills.frameworks;
+        document.querySelector('[data-i18n="skills.databases"]').textContent =
+          t.skills.databases;
+        document.querySelector('[data-i18n="skills.tools"]').textContent =
+          t.skills.tools;
+
+        /* ======================
+       CONTACT
+    ====================== */
+        document.querySelector('[data-i18n="contact.title"]').textContent =
+          t.contact.title;
+        document.querySelector(
+          '[data-i18n="contact.description"]'
+        ).textContent = t.contact.description;
+        document.querySelector(
+          '[data-i18n="contact.sendMessage"]'
+        ).textContent = t.contact.sendMessage;
+
+        /* ======================
+       FOOTER
+    ====================== */
+        document.querySelector('[data-i18n="footer.rights"]').textContent =
+          t.footer.rights;
+        document.querySelector('[data-i18n="footer.built"]').textContent =
+          t.footer.built;
+
+        // Active language button
+        document
+          .querySelectorAll(".lang-btn")
+          .forEach((btn) => btn.classList.remove("active"));
+        document
+          .querySelector(`.lang-btn[data-lang="${lang}"]`)
+          .classList.add("active");
       }
 
-      // Trigger skill bars animation when about section is visible
-      const aboutSection = document.querySelector(".about");
-      const aboutObserver = new IntersectionObserver(
+      // Buttons
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
+      });
+
+      // Default
+      setLanguage("en");
+    </script>
+
+    <script>
+      // Projects Data
+      const projects = [
+        {
+          title: "ERP System - Poincaré Institute",
+          description:
+            "Full ERP system for educational institute management, including admin and student portals.",
+          fullDescription:
+            "Developed a comprehensive ERP system for Poincaré Institute, integrating student portals, administrative dashboards, course management, real-time notifications, and payment system. Built with modern web technologies and deployed with Docker and CI/CD pipelines for scalability and reliability.",
+          technologies: ["Next.js", "Prisma", "Docker", "PostgreSQL", "CI/CD"],
+          images: [
+            "/projects/erp-1.jpg",
+            "/projects/erp2.jpg",
+            "/projects/erp-3.jpg",
+          ],
+          link: null,
+        },
+        {
+          title: "Student Space - Poincaré Institute",
+          description:
+            "Web platform for students to access courses, resources, and notifications.",
+          fullDescription:
+            "Created a student-facing platform as part of the ERP ecosystem, allowing access to course materials, notifications, schedules, and performance tracking. Integrated MySQL database for robust data management and ensured responsive UI for web and mobile access.",
+          technologies: ["Next.js", "MySQL", "Tailwind CSS"],
+          images: [
+            "/projects/poincare1.jpg",
+            "/projects/poincare2.jpg",
+            "/projects/poincare3.jpg",
+            "/projects/poincare4.jpg",
+            "/projects/poincare5.jpg",
+          ],
+          link: null,
+        },
+        {
+          title: "Hafadhny Mobile App - Poincaré Institute",
+          description:
+            "Mobile app for students to track courses and resources on-the-go",
+          fullDescription:
+            "Built an Expo/React Native mobile application integrated with the ERP backend, allowing students to view courses, resources, notifications, and schedules from their phones. Implemented secure authentication, offline caching, and push notifications.",
+          technologies: ["Expo", "React Native", "MySQL"],
+          images: [
+            "/projects/hafadhni1.jpg",
+            "/projects/hafadhni2.jpg",
+            "/projects/hafadhni3.jpg",
+            "/projects/hafadhni4.jpg",
+            "/projects/hafadhni5.jpg",
+          ],
+          link: null,
+        },
+        {
+          title: "Beedumy (iOS, Android, Web)",
+          description:
+            "Educational platform with cross-platform mobile and web apps",
+          fullDescription:
+            "Developed Beedumy's complete ecosystem including iOS, Android, and Web platforms. Features include student portals, admin dashboards, course and session management, real-time notifications, integrated payments, and reporting dashboards.",
+          technologies: ["React Native", "PHP", "MySQL", "CI/CD"],
+          images: [
+            "/projects/beedumy-1.jpg",
+            "/projects/beedumy-2.jpg",
+            "/projects/beedumy-3.jpg",
+            "/projects/beedumy-4.jpg",
+          ],
+          link: "https://beedumy.com/acceuil",
+        },
+        {
+          title: "Weekly Schedule Web App",
+          description: "Web app for scheduling classes and managing sessions",
+          fullDescription:
+            "Implemented a web application to manage weekly class schedules and sessions. Allows teachers to create and modify schedules, track sessions, and manage attendance.",
+          technologies: ["Next.js", "React", "MySQL"],
+          images: ["/projects/schedule.png"],
+          link: null,
+        },
+        {
+          title: "Baserow Database Implementation",
+          description: "Collaborative no-code database solution",
+          fullDescription:
+            "Implemented Baserow as a no-code database for managing institute data, workflows, and team collaboration. Configured tables, views, and automation rules.",
+          technologies: ["Baserow", "PostgreSQL"],
+          images: ["/projects/baserow.jpg"],
+          link: null,
+        },
+        {
+          title: "Leoni Digital Services",
+          description: "Web and mobile application for service digitalization",
+          fullDescription:
+            "Developed a cross-platform solution to digitalize Leoni's internal services with employee management, service requests, and real-time tracking.",
+          technologies: ["React Native", "Next.js", "Spring Boot", "MySQL"],
+          images: [
+            "/projects/leoni-1.jpg",
+            "/projects/leoni-2.jpg",
+            "/projects/leoni-3.jpg",
+          ],
+          link: null,
+        },
+        {
+          title: "Freelance Projects Portfolio",
+          description: "Various web and mobile applications with modern stack",
+          fullDescription:
+            "Collection of diverse projects including e-commerce platforms, booking systems, social media applications, and business management tools. Each project tailored to client needs with focus on performance, scalability, and user experience.",
+          technologies: [
+            "Nuxt.js",
+            "NestJS",
+            "Node.js",
+            "React Native",
+            "Laravel",
+          ],
+          images: ["/projects/freelance.png"],
+          link: null,
+        },
+      ];
+
+      // Typing animation
+      const fullName = "KENZA BEN AYED";
+      const heroNameEl = document.getElementById("heroName");
+      let index = 0;
+
+      function typeWriter() {
+        if (index < fullName.length) {
+          heroNameEl.innerHTML += fullName.charAt(index);
+          index++;
+          setTimeout(typeWriter, 100);
+        } else {
+          heroNameEl.innerHTML += '<span class="typing-cursor"></span>';
+        }
+      }
+
+      setTimeout(typeWriter, 600);
+
+      // Floating particles
+      const heroBg = document.querySelector(".hero-bg");
+      for (let i = 0; i < 20; i++) {
+        const particle = document.createElement("div");
+        particle.className = "float-particle";
+        particle.style.width = `${Math.random() * 100 + 50}px`;
+        particle.style.height = particle.style.width;
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+        particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+        heroBg.appendChild(particle);
+      }
+
+      // Scroll animations
+      const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              animateSkillBars();
-              aboutObserver.unobserve(entry.target);
+              // Animate language skills
+              entry.target
+                .querySelectorAll(".language-skill")
+                .forEach((skill, idx) => {
+                  const percentage = skill.dataset.percentage;
+                  const fill = skill.querySelector(".progress-fill");
+                  setTimeout(() => {
+                    fill.style.width = percentage + "%";
+                  }, idx * 200 + 400);
+                });
+
+              // Animate technical skills
+              entry.target
+                .querySelectorAll(".skill-item")
+                .forEach((skill, idx) => {
+                  const percentage = skill.dataset.skill;
+                  const fill = skill.querySelector(".progress-fill");
+                  setTimeout(() => {
+                    fill.style.width = percentage + "%";
+                  }, idx * 150);
+                });
             }
           });
         },
-        { threshold: 0.5 }
+        { threshold: 0.2 }
       );
 
-      if (aboutSection) {
-        aboutObserver.observe(aboutSection);
-      }
-
-      // Initialize language on page load
-      document.addEventListener("DOMContentLoaded", () => {
-        updateLanguage();
+      document.querySelectorAll(".section").forEach((section) => {
+        observer.observe(section);
       });
-
-      // Add typing effect to hero text
-      function typeWriter(element, text, speed = 100) {
-        let i = 0;
-        element.innerHTML = "";
-
-        function type() {
-          if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-          }
-        }
-        type();
-      }
-
-      // Initialize typing effect after page load
-      window.addEventListener("load", () => {
-        const heroTitle = document.querySelector(".hero-content h1");
-        if (heroTitle) {
-          const originalText = heroTitle.textContent;
-          originalText.classList.add("name-highlight");
-          setTimeout(() => {
-            typeWriter(heroTitle, originalText, 50);
-          }, 1000);
-        }
-      });
-
-      // Add scroll-to-top functionality
-      function addScrollToTop() {
-        const scrollBtn = document.createElement("button");
-        scrollBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-        scrollBtn.className = "scroll-to-top";
-        scrollBtn.style.cssText = `
-          position: fixed;
-          bottom: 2rem;
-          right: 2rem;
-          width: 50px;
-          height: 50px;
-          background: var(--gradient-1);
-          border: none;
-          border-radius: 50%;
-          color: white;
-          font-size: 1.2rem;
-          cursor: pointer;
-          opacity: 0;
-          visibility: hidden;
-          transition: all 0.3s ease;
-          z-index: 1000;
-        `;
-
-        document.body.appendChild(scrollBtn);
-
-        // Show/hide scroll button
-        window.addEventListener("scroll", () => {
-          if (window.scrollY > 500) {
-            scrollBtn.style.opacity = "1";
-            scrollBtn.style.visibility = "visible";
-          } else {
-            scrollBtn.style.opacity = "0";
-            scrollBtn.style.visibility = "hidden";
-          }
-        });
-
-        // Scroll to top on click
-        scrollBtn.addEventListener("click", () => {
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth",
+      const timelineObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
           });
+        },
+        { threshold: 0.2 }
+      );
+
+      document.querySelectorAll(".timeline-item").forEach((item) => {
+        timelineObserver.observe(item);
+      });
+
+      // Project image carousel
+      let currentImageIndices = {};
+      let lightboxData = { projectIndex: null, imageIndex: 0 };
+
+      function renderProjects() {
+        const container = document.getElementById("projectsContainer");
+        container.innerHTML = projects
+          .map((project, idx) => {
+            currentImageIndices[idx] = 0;
+            const hasMultipleImages = project.images.length > 1;
+            return `
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="${project.images[0]}" 
+                                 alt="${project.title}" 
+                                 class="project-image" 
+                                 onclick="openLightbox(${idx}, 0)">
+                            ${
+                              hasMultipleImages
+                                ? `
+                                <button class="image-nav prev" onclick="prevImage(${idx}, event)">‹</button>
+                                <button class="image-nav next" onclick="nextImage(${idx}, event)">›</button>
+                                <div class="image-counter">${
+                                  currentImageIndices[idx] + 1
+                                } / ${project.images.length}</div>
+                                <div class="image-indicators">
+                                    ${project.images
+                                      .map(
+                                        (_, i) => `
+                                        <div class="indicator ${
+                                          i === 0 ? "active" : ""
+                                        }" 
+                                             onclick="goToImage(${idx}, ${i}, event)"></div>
+                                    `
+                                      )
+                                      .join("")}
+                                </div>
+                            `
+                                : ""
+                            }
+                            <button class="expand-btn" onclick="openLightbox(${idx}, ${
+              currentImageIndices[idx]
+            })">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">${project.title}</h3>
+                            <p class="project-desc">${project.description}</p>
+                            <div class="tech-tags">
+                                ${project.technologies
+                                  .map(
+                                    (tech) =>
+                                      `<span class="tech-tag">${tech}</span>`
+                                  )
+                                  .join("")}
+                            </div>
+                            ${
+                              project.link
+                                ? `<a href="${project.link}" target="_blank" class="project-link">
+                                    View Project
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                        <polyline points="15 3 21 3 21 9"></polyline>
+                                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                                    </svg>
+                                </a>`
+                                : `<div style="color: #6b7280; font-size: 0.875rem; display: flex; align-items: center; gap: 0.5rem;">
+                                   
+                                   
+                                </div>`
+                            }
+                        </div>
+                    </div>
+                `;
+          })
+          .join("");
+      }
+
+      function updateProjectImage(projectIndex) {
+        const card = document.querySelectorAll(".project-card")[projectIndex];
+        const img = card.querySelector(".project-image");
+        const counter = card.querySelector(".image-counter");
+        const indicators = card.querySelectorAll(".indicator");
+        const currentIdx = currentImageIndices[projectIndex];
+
+        img.src = projects[projectIndex].images[currentIdx];
+        if (counter)
+          counter.textContent = `${currentIdx + 1} / ${
+            projects[projectIndex].images.length
+          }`;
+        indicators.forEach((ind, i) => {
+          ind.classList.toggle("active", i === currentIdx);
         });
       }
 
-      // Initialize scroll-to-top button
-      document.addEventListener("DOMContentLoaded", addScrollToTop);
+      function nextImage(projectIndex, event) {
+        event.stopPropagation();
+        const project = projects[projectIndex];
+        currentImageIndices[projectIndex] =
+          (currentImageIndices[projectIndex] + 1) % project.images.length;
+        updateProjectImage(projectIndex);
+      }
 
-      // Add hover effects to portfolio items
-      document.querySelectorAll(".portfolio-item").forEach((item) => {
-        item.addEventListener("mouseenter", function () {
-          this.style.transform = "translateY(-10px) scale(1.02)";
-        });
+      function prevImage(projectIndex, event) {
+        event.stopPropagation();
+        const project = projects[projectIndex];
+        currentImageIndices[projectIndex] =
+          (currentImageIndices[projectIndex] - 1 + project.images.length) %
+          project.images.length;
+        updateProjectImage(projectIndex);
+      }
 
-        item.addEventListener("mouseleave", function () {
-          this.style.transform = "translateY(0) scale(1)";
+      function goToImage(projectIndex, imageIndex, event) {
+        event.stopPropagation();
+        currentImageIndices[projectIndex] = imageIndex;
+        updateProjectImage(projectIndex);
+      }
+
+      function openLightbox(projectIndex, imageIndex) {
+        lightboxData = { projectIndex, imageIndex };
+        const lightbox = document.getElementById("lightbox");
+        const img = document.getElementById("lightboxImage");
+        const prevBtn = document.getElementById("lightboxPrev");
+        const nextBtn = document.getElementById("lightboxNext");
+
+        img.src = projects[projectIndex].images[imageIndex];
+        lightbox.classList.add("active");
+
+        if (projects[projectIndex].images.length > 1) {
+          prevBtn.style.display = "block";
+          nextBtn.style.display = "block";
+        } else {
+          prevBtn.style.display = "none";
+          nextBtn.style.display = "none";
+        }
+      }
+
+      function closeLightbox() {
+        document.getElementById("lightbox").classList.remove("active");
+      }
+
+      document.getElementById("lightboxPrev").onclick = function (e) {
+        e.stopPropagation();
+        const project = projects[lightboxData.projectIndex];
+        lightboxData.imageIndex =
+          (lightboxData.imageIndex - 1 + project.images.length) %
+          project.images.length;
+        document.getElementById("lightboxImage").src =
+          project.images[lightboxData.imageIndex];
+
+        // Update the main carousel too
+        currentImageIndices[lightboxData.projectIndex] =
+          lightboxData.imageIndex;
+        updateProjectImage(lightboxData.projectIndex);
+      };
+
+      document.getElementById("lightboxNext").onclick = function (e) {
+        e.stopPropagation();
+        const project = projects[lightboxData.projectIndex];
+        lightboxData.imageIndex =
+          (lightboxData.imageIndex + 1) % project.images.length;
+        document.getElementById("lightboxImage").src =
+          project.images[lightboxData.imageIndex];
+
+        // Update the main carousel too
+        currentImageIndices[lightboxData.projectIndex] =
+          lightboxData.imageIndex;
+        updateProjectImage(lightboxData.projectIndex);
+      };
+
+      document.getElementById("lightbox").onclick = function (e) {
+        if (e.target.id === "lightbox") closeLightbox();
+      };
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+          }
         });
       });
 
-      // Add parallax effect to hero background
+      // Nav scroll effect
       window.addEventListener("scroll", () => {
-        const scrolled = window.pageYOffset;
-        const parallax = document.querySelector(".hero::before");
-        if (parallax) {
-          const speed = scrolled * 0.5;
-          parallax.style.transform = `translateY(${speed}px)`;
+        const nav = document.getElementById("nav");
+        if (window.scrollY > 50) {
+          nav.classList.add("scrolled");
+        } else {
+          nav.classList.remove("scrolled");
         }
       });
 
-      // Add loading animation
-      window.addEventListener("load", () => {
-        document.body.classList.add("loaded");
-
-        // Add CSS for loading state
-        const style = document.createElement("style");
-        style.textContent = `
-          body:not(.loaded) {
-            overflow: hidden;
-          }
-          
-          body:not(.loaded)::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg-primary);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          
-          body:not(.loaded)::after {
-            content: '';
-            width: 50px;
-            height: 50px;
-            border: 3px solid var(--primary-color);
-            border-top: 3px solid transparent;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10000;
-          }
-          
-          @keyframes spin {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
-          }
-        `;
-        document.head.appendChild(style);
+      // Language switcher
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          document
+            .querySelectorAll(".lang-btn")
+            .forEach((b) => b.classList.remove("active"));
+          this.classList.add("active");
+        });
       });
+
+      // Active nav link on scroll
+      const sections = document.querySelectorAll(".section, .hero");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (window.pageYOffset >= sectionTop - 100) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+          }
+        });
+      });
+
+      // Keyboard navigation for lightbox
+      document.addEventListener("keydown", function (e) {
+        if (!document.getElementById("lightbox").classList.contains("active"))
+          return;
+
+        if (e.key === "Escape") {
+          closeLightbox();
+        } else if (e.key === "ArrowLeft") {
+          document.getElementById("lightboxPrev").click();
+        } else if (e.key === "ArrowRight") {
+          document.getElementById("lightboxNext").click();
+        }
+      });
+
+      // Initialize
+      renderProjects();
     </script>
   </body>
 </html>
